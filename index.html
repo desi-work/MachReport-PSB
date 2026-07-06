@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root{--bg:#090b0f;--bg-card:#11141c;--bg-card-alt:#151923;--bg-hover:#191e2b;--border:#1c2130;--border-h:#2a3350;--fg:#e4e8f0;--fg2:#7e8a9e;--mt:#3e4a5c;--ac:#10b981;--ac-d:rgba(16,185,129,.07);--wn:#eab308;--wn-d:rgba(234,179,8,.09);--er:#ef4444;--er-d:rgba(239,68,68,.09);--in:#06b6d4;--in-d:rgba(6,182,212,.07);--ms:#a78bfa;--ms-d:rgba(167,139,250,.07)}
+        :root{--bg:#090b0f;--bg-card:#11141c;--bg-card-alt:#151923;--bg-hover:#191e2b;--border:#1c2130;--border-h:#2a3350;--fg:#e4e8f0;--fg2:#7e8a9e;--mt:#3e4a5c;--ac:#10b981;--ac-d:rgba(16,185,129,.07);--wn:#eab308;--wn-d:rgba(234,179,8,.09);--er:#ef4444;--er-d:rgba(239,68,68,.09);--in:#06b6d4;--in-d:rgba(6,182,212,.07)}
         *{box-sizing:border-box;margin:0;padding:0}
         body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
         .fm{font-family:'JetBrains Mono',monospace}
@@ -36,13 +36,8 @@
         .c-diff .ci{color:#f87171;font-size:.7rem}
         .c-miss{color:var(--wn);background:var(--wn-d);border-radius:4px;padding:1px 5px;font-style:italic;font-weight:500}
         .c-emp{color:var(--mt)}
-        .bg-row-y{background:var(--wn-d)!important}
-        .bg-row-r{background:var(--er-d)!important}
         .bl{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;letter-spacing:.02em}
-        .bl-g{background:var(--ac-d);color:var(--ac)}
-        .bl-r{background:var(--er-d);color:var(--er)}
-        .bl-y{background:var(--wn-d);color:var(--wn)}
-        .bl-b{background:var(--in-d);color:var(--in)}
+        .bl-g{background:var(--ac-d);color:var(--ac)}.bl-r{background:var(--er-d);color:var(--er)}.bl-y{background:var(--wn-d);color:var(--wn)}.bl-b{background:var(--in-d);color:var(--in)}
         .bp{background:var(--ac);color:#000;font-weight:600;padding:.65rem 1.6rem;border:none;border-radius:10px;cursor:pointer;font-size:.88rem;transition:all .25s;font-family:inherit}
         .bp:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 4px 20px rgba(16,185,129,.25)}
         .bp:disabled{opacity:.35;cursor:not-allowed;transform:none;filter:none;box-shadow:none}
@@ -52,6 +47,27 @@
         .bg2:hover{border-color:var(--er);color:var(--er)}
         .br{background:var(--in-d);color:var(--in);font-weight:600;padding:.55rem 1.15rem;border:1px solid rgba(6,182,212,.2);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}
         .br:hover{background:rgba(6,182,212,.14);border-color:rgba(6,182,212,.4)}
+
+        /* Filter chips */
+        .flt-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .5rem;border-bottom:1px solid var(--border);background:var(--bg-card-alt);flex-wrap:wrap;position:sticky;top:0;z-index:4}
+        .flt-chip{padding:.35rem .85rem;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--fg2);font-family:inherit;white-space:nowrap}
+        .flt-chip:hover{border-color:var(--border-h);color:var(--fg)}
+        .flt-chip.on-all{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+        .flt-chip.on-g{background:var(--ac-d);color:var(--ac);border-color:var(--ac)}
+        .flt-chip.on-r{background:var(--er-d);color:var(--er);border-color:var(--er)}
+        .flt-chip.on-y{background:var(--wn-d);color:var(--wn);border-color:var(--wn)}
+        .flt-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:9px;font-size:.6rem;font-weight:700;margin-left:.3rem;padding:0 4px}
+        .flt-chip.on-all .flt-count{background:var(--bg);color:var(--fg)}
+        .flt-chip.on-g .flt-count{background:rgba(16,185,129,.2);color:var(--ac)}
+        .flt-chip.on-r .flt-count{background:rgba(239,68,68,.2);color:var(--er)}
+        .flt-chip.on-y .flt-count{background:rgba(234,179,8,.2);color:var(--wn)}
+
+        .flt-search{margin-left:auto;position:relative}
+        .flt-search input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.35rem .7rem .35rem 2rem;font-size:.75rem;color:var(--fg);outline:0;font-family:inherit;width:200px;transition:border-color .2s}
+        .flt-search input:focus{border-color:var(--ac)}
+        .flt-search input::placeholder{color:var(--mt)}
+        .flt-search i{position:absolute;left:.6rem;top:50%;transform:translateY(-50%);color:var(--mt);font-size:.7rem}
+
         input[type=range]{-webkit-appearance:none;width:130px;height:5px;background:var(--border);border-radius:3px;outline:0}
         input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--ac);border-radius:50%;cursor:pointer}
         .toast{padding:.7rem 1.15rem;border-radius:10px;font-size:.82rem;font-weight:500;animation:ti .35s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);display:flex;align-items:center;gap:.5rem}
@@ -67,11 +83,11 @@
         .dbf{height:100%;border-radius:4px;transition:width .6s ease}
         .sb{background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(16,185,129,.05));border:1px solid rgba(6,182,212,.18);border-radius:12px;padding:.9rem 1.15rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.15rem}
         ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:0 0}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--mt)}
-        .bl-y2{border-left:3px solid var(--wn)!important}
-        .bl-r2{border-left:3px solid var(--er)!important}
-        .bl-g2{border-left:3px solid var(--ac)!important}
-        .bl-b2{border-left:3px solid var(--in)!important}
-        @media(max-width:768px){.sg{grid-template-columns:repeat(2,1fr)!important}.ug{grid-template-columns:1fr!important}.sbar{flex-direction:column;align-items:flex-start!important}.sb{flex-direction:column;text-align:center}}
+        .rl-y{border-left:3px solid var(--wn)!important}
+        .rl-r{border-left:3px solid var(--er)!important}
+        .rl-g{border-left:3px solid var(--ac)!important}
+        .rl-b{border-left:3px solid var(--in)!important}
+        @media(max-width:768px){.sg{grid-template-columns:repeat(2,1fr)!important}.ug{grid-template-columns:1fr!important}.sbar{flex-direction:column;align-items:flex-start!important}.sb{flex-direction:column;text-align:center}.flt-bar{flex-direction:column;align-items:flex-start}.flt-search{margin-left:0;margin-top:.3rem;width:100%}.flt-search input{width:100%}}
     </style>
 </head>
 <body>
@@ -138,7 +154,7 @@
 <div id="tCt" class="fixed top-5 right-5 z-50 flex flex-col gap-2" style="max-width:380px"></div>
 
 <script>
-var SK='spk_m_v3',S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:''};
+var SK='spk_m_v4',S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:'',flt:'all',search:''};
 var CM=[
     {v:'No Husbel',i:'No Husbel',l:'No Husbel'},
     {v:'Meter Awal',i:'Meter Awal',l:'Meter Awal'},
@@ -157,64 +173,36 @@ var CM=[
 var BL={jan:1,feb:2,mar:3,apr:4,mei:5,may:5,jun:6,jul:7,agu:8,aug:8,sep:9,okt:10,oct:10,nov:11,des:12,dec:12};
 function $(id){return document.getElementById(id)}
 
-// ============================================================
-// PARSE EXCEL — raw:false agar tanggal tetap format asli
-// ============================================================
-function parseXLS(f){return new Promise(function(ok,no){var r=new FileReader;r.onload=function(e){try{var d=new Uint8Array(e.target.result),w=XLSX.read(d,{type:'array'});var ws=w.Sheets[w.SheetNames[0]];
-// raw:false = baca teks yang ditampilkan di Excel, bukan angka serial
-ok(XLSX.utils.sheet_to_json(ws,{defval:'',raw:false}))}catch(err){no(err)}};r.onerror=function(){no(new Error('Gagal baca'))};r.readAsArrayBuffer(f)})}
+function parseXLS(f){return new Promise(function(ok,no){var r=new FileReader;r.onload=function(e){try{var d=new Uint8Array(e.target.result),w=XLSX.read(d,{type:'array'});ok(XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]],{defval:'',raw:false}))}catch(err){no(err)}};r.onerror=function(){no(new Error('Gagal baca'))};r.readAsArrayBuffer(f)})}
 
-// ============================================================
-// NORMALISASI (hanya untuk pencocokan, tidak mengubah tampilan)
-// ============================================================
-function nD(v){if(!v||v==='*'||v==='Total')return '';var s=String(v).trim(),m;
-m=s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];if(b)return m[3]+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}
-m=s.match(/^(\d{1,2})[-\/]([A-Za-z]+)[-\/](\d{2,4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];var y=m[3].length===2?(parseInt(m[3])>50?'19'+m[3]:'20'+m[3]):m[3];if(b)return y+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}
-// Fallback: coba parse angka serial Excel → tanggal
-var num=parseFloat(s);if(!isNaN(num)&&num>40000&&num<60000){var dt=new Date((num-25569)*86400000);if(!isNaN(dt)){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0')}}
-return s}
+function nD(v){if(!v||v==='*'||v==='Total')return '';var s=String(v).trim(),m;m=s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];if(b)return m[3]+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}m=s.match(/^(\d{1,2})[-\/]([A-Za-z]+)[-\/](\d{2,4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];var y=m[3].length===2?(parseInt(m[3])>50?'19'+m[3]:'20'+m[3]):m[3];if(b)return y+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}var num=parseFloat(s);if(!isNaN(num)&&num>40000&&num<60000){var dt=new Date((num-25569)*86400000);if(!isNaN(dt))return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0')}return s}
 function nN(v){if(!v||v==='*')return '';return String(v).trim().toLowerCase().replace(/\s+/g,' ').replace(/[()]/g,'')}
 function nH(v){if(!v||v==='*'||v==='')return '';var s=String(v).trim().toLowerCase();s=s.replace(/^hs\s+/i,'');s=s.replace(/\s+/g,'');s=s.replace(/fa6c[-:]/g,'fa6-');return s}
 function nNum(v){if(v===null||v===undefined||v==='*'||v==='')return '';var s=String(v).trim().toLowerCase().replace(/m$/g,'').trim();if(s===''||s==='-')return '';var n=parseFloat(s);return isNaN(n)?s:n}
 function vM(a,b){var n1=nNum(a),n2=nNum(b);if(n1===''&&n2==='')return true;if(n1===''||n2==='')return false;return n1===n2}
-
-// ============================================================
-// LEVENSHTEIN & SIMILARITY
-// ============================================================
 function lev(a,b){var m=a.length,n=b.length;if(!m)return n;if(!n)return m;var d=[];for(var i=0;i<=m;i++){d[i]=[i];for(var j=1;j<=n;j++){if(!i){d[0][j]=j;continue}d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1))}}return d[m][n]}
 function sim(a,b){if(a===b)return 1;if(!a||!b)return 0;var l=a.length>=b.length?a:b,s=a.length<b.length?a:b;if(l.indexOf(s)!==-1){var r=s.length/l.length;if(r>.45)return .82+r*.18}var ml=Math.max(a.length,b.length);return ml?Math.max(0,1-lev(a,b)/ml):1}
 
-// ============================================================
-// STORAGE
-// ============================================================
 function svD(){try{localStorage.setItem(SK,JSON.stringify({vd:S.vd,id:S.id,vfn:S.vfn,ifn:S.ifn,t:new Date().toISOString()}))}catch(e){}}
 function gtSv(){try{var r=localStorage.getItem(SK);return r?JSON.parse(r):null}catch(e){return null}}
 function ldSv(){var d=gtSv();if(!d){toast('Tidak ada data tersimpan','w');return}S.vd=d.vd||[];S.id=d.id||[];S.vfn=d.vfn||'';S.ifn=d.ifn||'';if(S.vd.length)uZ('v',S.vfn||'vendor.xlsx',S.vd.length,1);if(S.id.length)uZ('i',S.ifn||'internal.xlsx',S.id.length,1);chk();$('sBan').classList.add('hidden');toast('Data dimuat dari penyimpanan','g')}
 function clSv(){localStorage.removeItem(SK);$('sBan').classList.add('hidden');['v','i'].forEach(function(t){var z=$(t+'Dz');z.classList.remove('ok','sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-file-excel text-3xl text-[var(--mt)]"></i>';$(t+'Tx').innerHTML='Seret file atau klik untuk upload';$(t+'If').classList.add('hidden')});S.vd=[];S.id=[];S.vfn='';S.ifn='';S.res=null;$('rSec').classList.add('hidden');chk();toast('Data tersimpan dihapus','i')}
 function chkSv(){var d=gtSv();if(!d)return;var vc=(d.vd||[]).length,ic=(d.id||[]).length;if(!vc&&!ic)return;var dt=d.t?new Date(d.t):null;var ds=dt?dt.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';var p=[];if(vc)p.push('Vendor: '+vc+' baris');if(ic)p.push('Internal: '+ic+' baris');$('sInf').textContent=p.join(' \u00b7 ')+(ds?' \u2014 '+ds:'');$('sBan').classList.remove('hidden')}
 
-// ============================================================
-// UPLOAD
-// ============================================================
 function hFile(inp,t){var f=inp.files[0];if(!f)return;parseXLS(f).then(function(data){var dc=t==='v'?'Tanggal':'TANGGAL';var fl=data.filter(function(r){return r[dc]&&r[dc]!=='Total'});if(t==='v'){S.vd=fl;S.vfn=f.name;uZ('v',f.name,fl.length,0)}else{S.id=fl;S.ifn=f.name;uZ('i',f.name,fl.length,0)}svD();$('sBan').classList.add('hidden');toast(f.name+' dimuat ('+fl.length+' baris)','g');chk()}).catch(function(e){toast('Gagal parse: '+e.message,'r')})}
 function uZ(t,fn,c,fs){var z=$(t+'Dz');z.classList.add('ok');if(fs)z.classList.add('sv');else z.classList.remove('sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-circle-check text-3xl text-[var(--ac)]"></i>';$(t+'Tx').innerHTML='<span class="font-semibold text-[var(--fg)]">'+fn+'</span>';var inf=$(t+'If');inf.classList.remove('hidden');inf.textContent=c+' baris data'}
 function chk(){$('goB').disabled=!(S.vd.length>0&&S.id.length>0)}
 
-// ============================================================
-// DRAG & DROP
-// ============================================================
 ['v','i'].forEach(function(t){var z=$(t+'Dz'),inp=$(t+'In');z.addEventListener('dragover',function(e){e.preventDefault();z.classList.add('dov')});z.addEventListener('dragleave',function(){z.classList.remove('dov')});z.addEventListener('drop',function(e){e.preventDefault();z.classList.remove('dov');var f=e.dataTransfer.files[0];if(f){var dt=new DataTransfer();dt.items.add(f);inp.files=dt.files;hFile(inp,t)}})});
 
 // ============================================================
-// PENCOCOKAN UTAMA
+// PENCOCOKAN
 // ============================================================
 function run(){
     var th=parseFloat($('fzT').value)||.65;
     var R={all:[],miss:[],extra:[],disc:{}};
-    var used={};
-    var ibd={};
+    var used={};var ibd={};
     S.id.forEach(function(r,idx){var dk=nD(r['TANGGAL']);if(!dk)return;if(!ibd[dk])ibd[dk]=[];ibd[dk].push({r:r,idx:idx})});
-
     S.vd.forEach(function(vr,vi){
         var vd=nD(vr['Tanggal']),vn=nN(vr['Nama SPK']),vh=nH(vr['No Husbel']);
         var entry={v:vr,internal:null,diffCount:0,diffCols:[]};
@@ -223,21 +211,29 @@ function run(){
         if(!cands.length){entry.internal=null;R.all.push(entry);R.miss.push({v:vr,idx:vi,reason:'Tidak ada di Internal pada tanggal ini'});return}
         var bs=-1,bc=null;
         for(var ci=0;ci<cands.length;ci++){var c=cands[ci];var in2=nN(c.r['NAMA SPK']),ih=nH(c.r['No Husbel']);var ns=sim(vn,in2);var hb=(vh&&ih&&vh===ih)?.25:0;var sc=ns+hb;if(sc>bs){bs=sc;bc=c}}
-        if(bc&&bs>=th){
-            used[bc.idx]=1;entry.internal=bc.r;entry.matchType=bs>=1?'Eksak':'Fuzzy';entry.score=bs;
-            CM.forEach(function(col){if(!vM(vr[col.v],bc.r[col.i])){entry.diffCount++;entry.diffCols.push(col.l)}});
-        }
+        if(bc&&bs>=th){used[bc.idx]=1;entry.internal=bc.r;entry.matchType=bs>=1?'Eksak':'Fuzzy';entry.score=bs;CM.forEach(function(col){if(!vM(vr[col.v],bc.r[col.i])){entry.diffCount++;entry.diffCols.push(col.l)}})}
         R.all.push(entry);
     });
     S.id.forEach(function(r,idx){var dk=nD(r['TANGGAL']);if(!dk)return;if(!used[idx])R.extra.push({r:r,idx:idx})});
     CM.forEach(function(col){var t=0,m=0,mm=0,be=0;R.all.forEach(function(e){if(!e.internal)return;var n1=nNum(e.v[col.v]),n2=nNum(e.internal[col.i]);if(n1===''&&n2===''){be++;return}t++;if(vM(e.v[col.v],e.internal[col.i]))m++;else mm++});R.disc[col.l]={t:t,m:m,mm:mm,be:be}});
-    S.res=R;$('rSec').classList.remove('hidden');$('rSec').scrollIntoView({behavior:'smooth',block:'start'});renderAll();
+    S.res=R;S.flt='all';S.search='';
+    $('rSec').classList.remove('hidden');$('rSec').scrollIntoView({behavior:'smooth',block:'start'});renderAll();
     var paired=R.all.filter(function(e){return e.internal}).length;
     toast('Selesai: '+paired+' dipasangkan, '+R.miss.length+' tidak ada di Internal, '+R.extra.length+' ekstra di Internal','i');
 }
 
 // ============================================================
-// RENDER
+// HITUNG JUMLAH PER STATUS (untuk filter chips)
+// ============================================================
+function cntStatus(){
+    var r=S.res;if(!r)return{all:0,ok:0,diff:0,miss:0};
+    var ok=0,diff=0,miss=0;
+    r.all.forEach(function(e){if(!e.internal)miss++;else if(e.diffCount>0)diff++;else ok++});
+    return{all:r.all.length,ok:ok,diff:diff,miss:miss};
+}
+
+// ============================================================
+// RENDER UTAMA
 // ============================================================
 function renderAll(){rSt();rTab();uTC();var dc=0;CM.forEach(function(c){dc+=S.res.disc[c.l].mm});$('rNt').textContent=S.vd.length+' baris vendor \u00b7 '+dc+' selisih nilai ditemukan'}
 
@@ -259,39 +255,83 @@ function swT(t){S.tab=t;document.querySelectorAll('.tb').forEach(function(b){b.c
 function rTab(){var c=$('tCn');switch(S.tab){case'cmp':rCmp(c);break;case'mis':rMis(c);break;case'ext':rExt(c);break;case'dsc':rDsc(c);break}}
 
 // ============================================================
-// TAB PERBANDINGAN — Semua baris vendor
+// FILTER — ganti status filter & re-render tabel
+// ============================================================
+function setFlt(val){S.flt=val;rCmp($('tCn'))}
+function setSrc(val){S.search=val.toLowerCase();rCmp($('tCn'))}
+
+// ============================================================
+// TAB PERBANDINGAN + FILTER CHIPS
 // ============================================================
 function rCmp(con){
-    var data=S.res.all;if(!data.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
-    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Status</th>';
-    CM.forEach(function(c){h+='<th>'+c.l+'</th>'});h+='</tr></thead><tbody>';
-    data.forEach(function(e,idx){
-        var hasI=!!e.internal;
-        // Kuning = tidak ada di internal, Merah = ada selisih, Hijau = cocok
-        var rowCls=hasI?(e.diffCount>0?'bl-r2':'bl-g2'):'bl-y2';
-        var statusHtml;
-        if(!hasI) statusHtml='<span class="bl bl-y">TIDAK ADA DI INTERNAL</span>';
-        else if(e.diffCount>0) statusHtml='<span class="bl bl-r">SELISIH ('+e.diffCount+')</span>';
-        else statusHtml='<span class="bl bl-g">COCOK</span>';
-        // Tanggal tetap format asli dari file
-        var dateVal=e.v['Tanggal']||'';
-        var nameVal=e.v['Nama SPK']||'';
-        h+='<tr class="'+rowCls+'"><td class="fm text-[var(--mt)]">'+(idx+1)+'</td><td class="fm text-xs">'+dateVal+'</td><td class="text-xs max-w-[200px] truncate" title="'+nameVal+'">'+nameVal+'</td><td>'+statusHtml+'</td>';
-        CM.forEach(function(col){
-            if(!hasI){
-                // KUNING: tidak ada pasangan — tampilkan nilai vendor dengan warna kuning
-                var vv=e.v[col.v];var dv=(!vv||vv==='*'||vv==='')?'-':vv;
-                h+='<td class="fm text-center"><span class="c-miss">'+dv+'</span></td>';
-            } else {
-                h+=mkC(e.v[col.v],e.internal[col.i]);
-            }
-        });
-        h+='</tr>';
+    var r=S.res;if(!r.all.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
+    var cs=cntStatus();
+
+    // Bangun filter bar
+    var chips=[
+        {key:'all',label:'Semua',count:cs.all,cls:'on-all'},
+        {key:'ok',label:'Cocok',count:cs.ok,cls:'on-g'},
+        {key:'diff',label:'Selisih',count:cs.diff,cls:'on-r'},
+        {key:'miss',label:'Tidak Ada',count:cs.miss,cls:'on-y'}
+    ];
+    var h='<div class="flt-bar">';
+    chips.forEach(function(ch){
+        var isOn=S.flt===ch.key;
+        h+='<button class="flt-chip '+(isOn?ch.cls:'')+'" onclick="setFlt(\''+ch.key+'\')">'+ch.label+'<span class="flt-count">'+ch.count+'</span></button>';
     });
+    h+='<div class="flt-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Cari Nama SPK..." value="'+(S.search||'')+'" oninput="setSrc(this.value)"></div>';
+    h+='</div>';
+
+    // Filter data
+    var data=r.all.filter(function(e){
+        // Filter status
+        if(S.flt==='ok'&&(!e.internal||e.diffCount>0))return false;
+        if(S.flt==='diff'&&(!e.internal||e.diffCount===0))return false;
+        if(S.flt==='miss'&&e.internal)return false;
+        // Filter search
+        if(S.search){var name=(e.v['Nama SPK']||'').toLowerCase();if(name.indexOf(S.search)===-1)return false}
+        return true;
+    });
+
+    // Info jumlah yang ditampilkan
+    if(data.length!==cs.all){
+        h+='<div style="padding:.4rem .6rem;font-size:.72rem;color:var(--fg2);background:var(--bg-card);border-bottom:1px solid var(--border)">Menampilkan '+data.length+' dari '+cs.all+' baris</div>';
+    }
+
+    h+='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Status</th>';
+    CM.forEach(function(c){h+='<th>'+c.l+'</th>'});h+='</tr></thead><tbody>';
+
+    if(!data.length){
+        h+='<tr><td colspan="'+(3+CM.length)+'" style="text-align:center;padding:2.5rem;color:var(--mt)"><i class="fa-solid fa-filter" style="margin-right:.4rem"></i>Tidak ada data yang cocok dengan filter</td></tr>';
+    } else {
+        var rowIdx=0;
+        data.forEach(function(e){
+            rowIdx++;
+            var hasI=!!e.internal;
+            var rowCls=hasI?(e.diffCount>0?'rl-r':'rl-g'):'rl-y';
+            var statusHtml;
+            if(!hasI) statusHtml='<span class="bl bl-y">TIDAK ADA DI INTERNAL</span>';
+            else if(e.diffCount>0) statusHtml='<span class="bl bl-r">SELISIH ('+e.diffCount+')</span>';
+            else statusHtml='<span class="bl bl-g">COCOK</span>';
+            var dateVal=e.v['Tanggal']||'';
+            var nameVal=e.v['Nama SPK']||'';
+            // Highlight search match
+            var nameDisplay=nameVal;
+            if(S.search&&nameVal){
+                var lc=nameVal.toLowerCase(),si=lc.indexOf(S.search);
+                if(si!==-1){nameDisplay=nameVal.substring(0,si)+'<mark style="background:rgba(234,179,8,.25);color:var(--wn);border-radius:2px;padding:0 2px">'+nameVal.substring(si,si+S.search.length)+'</mark>'+nameVal.substring(si+S.search.length)}
+            }
+            h+='<tr class="'+rowCls+'"><td class="fm text-[var(--mt)]">'+rowIdx+'</td><td class="fm text-xs">'+dateVal+'</td><td class="text-xs max-w-[200px] truncate" title="'+nameVal+'">'+nameDisplay+'</td><td>'+statusHtml+'</td>';
+            CM.forEach(function(col){
+                if(!hasI){var vv=e.v[col.v];var dv=(!vv||vv==='*'||vv==='')?'-':vv;h+='<td class="fm text-center"><span class="c-miss">'+dv+'</span></td>'}
+                else{h+=mkC(e.v[col.v],e.internal[col.i])}
+            });
+            h+='</tr>';
+        });
+    }
     h+='</tbody></table>';con.innerHTML=h;
 }
 
-// Sel perbandingan: hijau=cocok, merah=selisih
 function mkC(vv,iv){
     var nv=nNum(vv),ni=nNum(iv),sv=String(vv).trim(),si=String(iv).trim();
     if(nv===''&&ni==='')return '<td class="fm text-center c-emp">-</td>';
@@ -310,13 +350,8 @@ function rMis(con){
     var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Alasan</th>';
     cols.forEach(function(c){h+='<th>'+c+'</th>'});h+='</tr></thead><tbody>';
     data.forEach(function(item,i){
-        var r=item.v;
-        h+='<tr class="bl-y2"><td class="fm text-[var(--mt)]">'+(i+1)+'</td>';
-        h+='<td class="fm text-xs">'+(r['Tanggal']||'')+'</td>';
-        h+='<td class="text-xs max-w-[240px] truncate" title="'+(r['Nama SPK']||'')+'">'+(r['Nama SPK']||'')+'</td>';
-        h+='<td class="text-xs" style="color:var(--wn)">'+item.reason+'</td>';
-        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs"><span class="c-miss">'+((!val||val==='*'||val==='')?'-':val)+'</span></td>'});
-        h+='</tr>';
+        var r=item.v;h+='<tr class="rl-y"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r['Tanggal']||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r['Nama SPK']||'')+'">'+(r['Nama SPK']||'')+'</td><td class="text-xs" style="color:var(--wn)">'+item.reason+'</td>';
+        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs"><span class="c-miss">'+((!val||val==='*'||val==='')?'-':val)+'</span></td>'});h+='</tr>';
     });h+='</tbody></table>';con.innerHTML=h;
 }
 
@@ -329,18 +364,13 @@ function rExt(con){
     var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th>';
     cols.forEach(function(c){h+='<th>'+c+'</th>'});h+='</tr></thead><tbody>';
     data.forEach(function(item,i){
-        var r=item.r;
-        h+='<tr class="bl-b2"><td class="fm text-[var(--mt)]">'+(i+1)+'</td>';
-        // Tanggal tetap format asli
-        h+='<td class="fm text-xs">'+(r['TANGGAL']||'')+'</td>';
-        h+='<td class="text-xs max-w-[240px] truncate" title="'+(r['NAMA SPK']||'')+'">'+(r['NAMA SPK']||'')+'</td>';
-        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs">'+((!val||val==='*'||val==='')?'-':val)+'</td>'});
-        h+='</tr>';
+        var r=item.r;h+='<tr class="rl-b"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r['TANGGAL']||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r['NAMA SPK']||'')+'">'+(r['NAMA SPK']||'')+'</td>';
+        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs">'+((!val||val==='*'||val==='')?'-':val)+'</td>'});h+='</tr>';
     });h+='</tbody></table>';con.innerHTML=h;
 }
 
 // ============================================================
-// TAB RINGKASAN DISKREPANSI
+// TAB RINGKASAN
 // ============================================================
 function rDsc(con){
     var stats=S.res.disc;var paired=S.res.all.filter(function(e){return e.internal}).length;
@@ -354,7 +384,7 @@ function rDsc(con){
 }
 
 // ============================================================
-// EXPORT EXCEL — tanggal tetap format asli
+// EXPORT
 // ============================================================
 function expX(){
     var r=S.res;var wb=XLSX.utils.book_new();
@@ -364,10 +394,9 @@ function expX(){
         else if(e.diffCount>0) row['Status']='SELISIH ('+e.diffCount+')';
         else row['Status']='COCOK';
         CM.forEach(function(col){
-            row['[V] '+col.l]=e.v[col.v]||'';
-            row['[I] '+col.l]=e.internal?(e.internal[col.i]||''):'-';
+            row['[V] '+col.l]=e.v[col.v]||'';row['[I] '+col.l]=e.internal?(e.internal[col.i]||''):'-';
             if(!e.internal) row['Status '+col.l]='Tidak ada pasangan';
-            else{var nv=nNum(e.v[col.v]),ni=nNum(e.internal[col.i]);if(nv===''&&ni==='') row['Status '+col.l]='-';else if(vM(e.v[col.v],e.internal[col.i])) row['Status '+col.l]='Cocok';else row['Status '+col.l]='SELISIH'}
+            else{var nv=nNum(e.v[col.v]),ni=nNum(e.internal[col.i]);if(nv===''&&ni==='')row['Status '+col.l]='-';else if(vM(e.v[col.v],e.internal[col.i]))row['Status '+col.l]='Cocok';else row['Status '+col.l]='SELISIH'}
         });return row;
     });
     XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rows),'Perbandingan');
