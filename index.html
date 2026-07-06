@@ -48,25 +48,25 @@
         .br{background:var(--in-d);color:var(--in);font-weight:600;padding:.55rem 1.15rem;border:1px solid rgba(6,182,212,.2);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}
         .br:hover{background:rgba(6,182,212,.14);border-color:rgba(6,182,212,.4)}
 
-        /* Filter chips */
-        .flt-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .5rem;border-bottom:1px solid var(--border);background:var(--bg-card-alt);flex-wrap:wrap;position:sticky;top:0;z-index:4}
-        .flt-chip{padding:.35rem .85rem;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--fg2);font-family:inherit;white-space:nowrap}
-        .flt-chip:hover{border-color:var(--border-h);color:var(--fg)}
-        .flt-chip.on-all{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-        .flt-chip.on-g{background:var(--ac-d);color:var(--ac);border-color:var(--ac)}
-        .flt-chip.on-r{background:var(--er-d);color:var(--er);border-color:var(--er)}
-        .flt-chip.on-y{background:var(--wn-d);color:var(--wn);border-color:var(--wn)}
-        .flt-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:9px;font-size:.6rem;font-weight:700;margin-left:.3rem;padding:0 4px}
-        .flt-chip.on-all .flt-count{background:var(--bg);color:var(--fg)}
-        .flt-chip.on-g .flt-count{background:rgba(16,185,129,.2);color:var(--ac)}
-        .flt-chip.on-r .flt-count{background:rgba(239,68,68,.2);color:var(--er)}
-        .flt-chip.on-y .flt-count{background:rgba(234,179,8,.2);color:var(--wn)}
-
+        .flt-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .6rem;border-radius:12px 12px 0 0;border:1px solid var(--border);border-bottom:none;background:var(--bg-card);flex-wrap:wrap}
+        .flt-chip{padding:.4rem .9rem;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--fg2);font-family:inherit;white-space:nowrap}
+        .flt-chip:hover{border-color:var(--border-h);color:var(--fg);transform:translateY(-1px)}
+        .flt-chip:active{transform:translateY(0)}
+        .fc-a{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+        .fc-a .fc-n{background:var(--bg);color:var(--fg)}
+        .fc-g{background:var(--ac-d);color:var(--ac);border-color:rgba(16,185,129,.3)}
+        .fc-g .fc-n{background:rgba(16,185,129,.2);color:var(--ac)}
+        .fc-r{background:var(--er-d);color:var(--er);border-color:rgba(239,68,68,.3)}
+        .fc-r .fc-n{background:rgba(239,68,68,.2);color:var(--er)}
+        .fc-y{background:var(--wn-d);color:var(--wn);border-color:rgba(234,179,8,.3)}
+        .fc-y .fc-n{background:rgba(234,179,8,.2);color:var(--wn)}
+        .fc-n{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:10px;font-size:.62rem;font-weight:700;margin-left:.35rem;padding:0 5px}
         .flt-search{margin-left:auto;position:relative}
-        .flt-search input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.35rem .7rem .35rem 2rem;font-size:.75rem;color:var(--fg);outline:0;font-family:inherit;width:200px;transition:border-color .2s}
-        .flt-search input:focus{border-color:var(--ac)}
+        .flt-search input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.4rem .7rem .4rem 2rem;font-size:.75rem;color:var(--fg);outline:0;font-family:inherit;width:210px;transition:all .2s}
+        .flt-search input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(16,185,129,.1)}
         .flt-search input::placeholder{color:var(--mt)}
-        .flt-search i{position:absolute;left:.6rem;top:50%;transform:translateY(-50%);color:var(--mt);font-size:.7rem}
+        .flt-search i{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--mt);font-size:.7rem}
+        .flt-info{font-size:.7rem;color:var(--fg2);padding:.35rem .6rem;background:var(--bg-card-alt);border-left:1px solid var(--border);border-right:1px solid var(--border)}
 
         input[type=range]{-webkit-appearance:none;width:130px;height:5px;background:var(--border);border-radius:3px;outline:0}
         input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--ac);border-radius:50%;cursor:pointer}
@@ -78,7 +78,7 @@
         @keyframes ti{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         .fu{animation:fu .4s ease forwards}
-        .tw{max-height:68vh;overflow:auto;border-radius:12px;border:1px solid var(--border);background:var(--bg-card)}
+        .tw{max-height:68vh;overflow:auto;border-radius:0 0 12px 12px;border:1px solid var(--border);border-top:none;background:var(--bg-card)}
         .db{height:7px;border-radius:4px;background:var(--border);overflow:hidden}
         .dbf{height:100%;border-radius:4px;transition:width .6s ease}
         .sb{background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(16,185,129,.05));border:1px solid rgba(6,182,212,.18);border-radius:12px;padding:.9rem 1.15rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.15rem}
@@ -87,7 +87,7 @@
         .rl-r{border-left:3px solid var(--er)!important}
         .rl-g{border-left:3px solid var(--ac)!important}
         .rl-b{border-left:3px solid var(--in)!important}
-        @media(max-width:768px){.sg{grid-template-columns:repeat(2,1fr)!important}.ug{grid-template-columns:1fr!important}.sbar{flex-direction:column;align-items:flex-start!important}.sb{flex-direction:column;text-align:center}.flt-bar{flex-direction:column;align-items:flex-start}.flt-search{margin-left:0;margin-top:.3rem;width:100%}.flt-search input{width:100%}}
+        @media(max-width:768px){.sg{grid-template-columns:repeat(2,1fr)!important}.ug{grid-template-columns:1fr!important}.sbar{flex-direction:column;align-items:flex-start!important}.sb{flex-direction:column;text-align:center}.flt-bar{flex-direction:column;align-items:stretch}.flt-search{margin-left:0;margin-top:.3rem}.flt-search input{width:100%}}
     </style>
 </head>
 <body>
@@ -144,6 +144,19 @@
             <button class="tb" data-t="ext" onclick="swT('ext')"><i class="fa-solid fa-circle-plus mr-1.5 text-xs"></i>Ekstra di Internal <span id="nE" class="ml-1 opacity-50"></span></button>
             <button class="tb" data-t="dsc" onclick="swT('dsc')"><i class="fa-solid fa-chart-bar mr-1.5 text-xs"></i>Ringkasan Selisih</button>
         </div>
+
+        <!-- FILTER BAR — STATIS, tidak pernah di-rebuild -->
+        <div id="fltBar" class="hidden" style="margin-bottom:0">
+            <div class="flt-bar">
+                <button class="flt-chip fc-a" data-f="all" onclick="setFlt('all')">Semua<span class="fc-n" id="fcA">0</span></button>
+                <button class="flt-chip" data-f="ok" onclick="setFlt('ok')">Cocok<span class="fc-n" id="fcO">0</span></button>
+                <button class="flt-chip" data-f="diff" onclick="setFlt('diff')">Selisih<span class="fc-n" id="fcD">0</span></button>
+                <button class="flt-chip" data-f="miss" onclick="setFlt('miss')">Tidak Ada<span class="fc-n" id="fcM">0</span></button>
+                <div class="flt-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="fltSrc" placeholder="Cari Nama SPK..." oninput="setSrc(this.value)"></div>
+            </div>
+            <div id="fltInfo" class="hidden flt-info"></div>
+        </div>
+
         <div id="tCn" class="tw"></div>
         <div class="flex justify-between items-center mt-4">
             <p class="text-xs text-[var(--mt)]" id="rNt"></p>
@@ -154,7 +167,7 @@
 <div id="tCt" class="fixed top-5 right-5 z-50 flex flex-col gap-2" style="max-width:380px"></div>
 
 <script>
-var SK='spk_m_v4',S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:'',flt:'all',search:''};
+var SK='spk_m_v5',S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:'',flt:'all',search:''};
 var CM=[
     {v:'No Husbel',i:'No Husbel',l:'No Husbel'},
     {v:'Meter Awal',i:'Meter Awal',l:'Meter Awal'},
@@ -171,6 +184,7 @@ var CM=[
     {v:'Jenis',i:'Jenis Kabel',l:'Jenis'}
 ];
 var BL={jan:1,feb:2,mar:3,apr:4,mei:5,may:5,jun:6,jul:7,agu:8,aug:8,sep:9,okt:10,oct:10,nov:11,des:12,dec:12};
+var CLS_MAP={all:'fc-a',ok:'fc-g',diff:'fc-r',miss:'fc-y'};
 function $(id){return document.getElementById(id)}
 
 function parseXLS(f){return new Promise(function(ok,no){var r=new FileReader;r.onload=function(e){try{var d=new Uint8Array(e.target.result),w=XLSX.read(d,{type:'array'});ok(XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]],{defval:'',raw:false}))}catch(err){no(err)}};r.onerror=function(){no(new Error('Gagal baca'))};r.readAsArrayBuffer(f)})}
@@ -186,7 +200,7 @@ function sim(a,b){if(a===b)return 1;if(!a||!b)return 0;var l=a.length>=b.length?
 function svD(){try{localStorage.setItem(SK,JSON.stringify({vd:S.vd,id:S.id,vfn:S.vfn,ifn:S.ifn,t:new Date().toISOString()}))}catch(e){}}
 function gtSv(){try{var r=localStorage.getItem(SK);return r?JSON.parse(r):null}catch(e){return null}}
 function ldSv(){var d=gtSv();if(!d){toast('Tidak ada data tersimpan','w');return}S.vd=d.vd||[];S.id=d.id||[];S.vfn=d.vfn||'';S.ifn=d.ifn||'';if(S.vd.length)uZ('v',S.vfn||'vendor.xlsx',S.vd.length,1);if(S.id.length)uZ('i',S.ifn||'internal.xlsx',S.id.length,1);chk();$('sBan').classList.add('hidden');toast('Data dimuat dari penyimpanan','g')}
-function clSv(){localStorage.removeItem(SK);$('sBan').classList.add('hidden');['v','i'].forEach(function(t){var z=$(t+'Dz');z.classList.remove('ok','sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-file-excel text-3xl text-[var(--mt)]"></i>';$(t+'Tx').innerHTML='Seret file atau klik untuk upload';$(t+'If').classList.add('hidden')});S.vd=[];S.id=[];S.vfn='';S.ifn='';S.res=null;$('rSec').classList.add('hidden');chk();toast('Data tersimpan dihapus','i')}
+function clSv(){localStorage.removeItem(SK);$('sBan').classList.add('hidden');['v','i'].forEach(function(t){var z=$(t+'Dz');z.classList.remove('ok','sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-file-excel text-3xl text-[var(--mt)]"></i>';$(t+'Tx').innerHTML='Seret file atau klik untuk upload';$(t+'If').classList.add('hidden')});S.vd=[];S.id=[];S.vfn='';S.ifn='';S.res=null;$('rSec').classList.add('hidden');$('fltBar').classList.add('hidden');chk();toast('Data tersimpan dihapus','i')}
 function chkSv(){var d=gtSv();if(!d)return;var vc=(d.vd||[]).length,ic=(d.id||[]).length;if(!vc&&!ic)return;var dt=d.t?new Date(d.t):null;var ds=dt?dt.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';var p=[];if(vc)p.push('Vendor: '+vc+' baris');if(ic)p.push('Internal: '+ic+' baris');$('sInf').textContent=p.join(' \u00b7 ')+(ds?' \u2014 '+ds:'');$('sBan').classList.remove('hidden')}
 
 function hFile(inp,t){var f=inp.files[0];if(!f)return;parseXLS(f).then(function(data){var dc=t==='v'?'Tanggal':'TANGGAL';var fl=data.filter(function(r){return r[dc]&&r[dc]!=='Total'});if(t==='v'){S.vd=fl;S.vfn=f.name;uZ('v',f.name,fl.length,0)}else{S.id=fl;S.ifn=f.name;uZ('i',f.name,fl.length,0)}svD();$('sBan').classList.add('hidden');toast(f.name+' dimuat ('+fl.length+' baris)','g');chk()}).catch(function(e){toast('Gagal parse: '+e.message,'r')})}
@@ -216,20 +230,53 @@ function run(){
     });
     S.id.forEach(function(r,idx){var dk=nD(r['TANGGAL']);if(!dk)return;if(!used[idx])R.extra.push({r:r,idx:idx})});
     CM.forEach(function(col){var t=0,m=0,mm=0,be=0;R.all.forEach(function(e){if(!e.internal)return;var n1=nNum(e.v[col.v]),n2=nNum(e.internal[col.i]);if(n1===''&&n2===''){be++;return}t++;if(vM(e.v[col.v],e.internal[col.i]))m++;else mm++});R.disc[col.l]={t:t,m:m,mm:mm,be:be}});
-    S.res=R;S.flt='all';S.search='';
+    S.res=R;S.flt='all';S.search='';$('fltSrc').value='';
     $('rSec').classList.remove('hidden');$('rSec').scrollIntoView({behavior:'smooth',block:'start'});renderAll();
     var paired=R.all.filter(function(e){return e.internal}).length;
     toast('Selesai: '+paired+' dipasangkan, '+R.miss.length+' tidak ada di Internal, '+R.extra.length+' ekstra di Internal','i');
 }
 
 // ============================================================
-// HITUNG JUMLAH PER STATUS (untuk filter chips)
+// HITUNG STATUS
 // ============================================================
-function cntStatus(){
+function cntSt(){
     var r=S.res;if(!r)return{all:0,ok:0,diff:0,miss:0};
     var ok=0,diff=0,miss=0;
     r.all.forEach(function(e){if(!e.internal)miss++;else if(e.diffCount>0)diff++;else ok++});
     return{all:r.all.length,ok:ok,diff:diff,miss:miss};
+}
+
+// ============================================================
+// UPDATE FILTER BAR — hanya update class & angka, tidak rebuild
+// ============================================================
+function updFltBar(){
+    var cs=cntSt();
+    $('fcA').textContent=cs.all;
+    $('fcO').textContent=cs.ok;
+    $('fcD').textContent=cs.diff;
+    $('fcM').textContent=cs.miss;
+    // Update class chip aktif
+    document.querySelectorAll('.flt-chip').forEach(function(btn){
+        // Hapus semua class aktif
+        btn.classList.remove('fc-a','fc-g','fc-r','fc-y');
+        // Tambahkan class aktif jika sesuai
+        var f=btn.dataset.f;
+        if(f===S.flt) btn.classList.add(CLS_MAP[f]);
+    });
+}
+
+// ============================================================
+// SET FILTER — ganti nilai & update tampilan
+// ============================================================
+function setFlt(val){
+    S.flt=val;
+    updFltBar();   // update chip aktif
+    rCmpTable();   // hanya re-render tabel
+}
+
+function setSrc(val){
+    S.search=val.toLowerCase();
+    rCmpTable();
 }
 
 // ============================================================
@@ -251,58 +298,48 @@ function rSt(){
 }
 
 function uTC(){var r=S.res;$('nC').textContent='('+r.all.length+')';$('nM').textContent='('+r.miss.length+')';$('nE').textContent='('+r.extra.length+')'}
-function swT(t){S.tab=t;document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});rTab()}
-function rTab(){var c=$('tCn');switch(S.tab){case'cmp':rCmp(c);break;case'mis':rMis(c);break;case'ext':rExt(c);break;case'dsc':rDsc(c);break}}
+function swT(t){
+    S.tab=t;
+    document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});
+    // Tampilkan/sembunyikan filter bar
+    if(t==='cmp'){$('fltBar').classList.remove('hidden');updFltBar()}
+    else{$('fltBar').classList.add('hidden')}
+    rTab();
+}
+function rTab(){var c=$('tCn');switch(S.tab){case'cmp':rCmpTable();break;case'mis':rMis(c);break;case'ext':rExt(c);break;case'dsc':rDsc(c);break}}
 
 // ============================================================
-// FILTER — ganti status filter & re-render tabel
+// TAB PERBANDINGAN — HANYA RENDER TABEL, filter bar tetap
 // ============================================================
-function setFlt(val){S.flt=val;rCmp($('tCn'))}
-function setSrc(val){S.search=val.toLowerCase();rCmp($('tCn'))}
-
-// ============================================================
-// TAB PERBANDINGAN + FILTER CHIPS
-// ============================================================
-function rCmp(con){
-    var r=S.res;if(!r.all.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
-    var cs=cntStatus();
-
-    // Bangun filter bar
-    var chips=[
-        {key:'all',label:'Semua',count:cs.all,cls:'on-all'},
-        {key:'ok',label:'Cocok',count:cs.ok,cls:'on-g'},
-        {key:'diff',label:'Selisih',count:cs.diff,cls:'on-r'},
-        {key:'miss',label:'Tidak Ada',count:cs.miss,cls:'on-y'}
-    ];
-    var h='<div class="flt-bar">';
-    chips.forEach(function(ch){
-        var isOn=S.flt===ch.key;
-        h+='<button class="flt-chip '+(isOn?ch.cls:'')+'" onclick="setFlt(\''+ch.key+'\')">'+ch.label+'<span class="flt-count">'+ch.count+'</span></button>';
-    });
-    h+='<div class="flt-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Cari Nama SPK..." value="'+(S.search||'')+'" oninput="setSrc(this.value)"></div>';
-    h+='</div>';
+function rCmpTable(){
+    var con=$('tCn');
+    var r=S.res;if(!r||!r.all.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
 
     // Filter data
     var data=r.all.filter(function(e){
-        // Filter status
         if(S.flt==='ok'&&(!e.internal||e.diffCount>0))return false;
         if(S.flt==='diff'&&(!e.internal||e.diffCount===0))return false;
         if(S.flt==='miss'&&e.internal)return false;
-        // Filter search
         if(S.search){var name=(e.v['Nama SPK']||'').toLowerCase();if(name.indexOf(S.search)===-1)return false}
         return true;
     });
 
-    // Info jumlah yang ditampilkan
+    // Info jumlah
+    var cs=cntSt();
+    var infoEl=$('fltInfo');
     if(data.length!==cs.all){
-        h+='<div style="padding:.4rem .6rem;font-size:.72rem;color:var(--fg2);background:var(--bg-card);border-bottom:1px solid var(--border)">Menampilkan '+data.length+' dari '+cs.all+' baris</div>';
+        infoEl.classList.remove('hidden');
+        infoEl.textContent='Menampilkan '+data.length+' dari '+cs.all+' baris';
+    } else {
+        infoEl.classList.add('hidden');
     }
 
-    h+='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Status</th>';
+    // Build tabel
+    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Status</th>';
     CM.forEach(function(c){h+='<th>'+c.l+'</th>'});h+='</tr></thead><tbody>';
 
     if(!data.length){
-        h+='<tr><td colspan="'+(3+CM.length)+'" style="text-align:center;padding:2.5rem;color:var(--mt)"><i class="fa-solid fa-filter" style="margin-right:.4rem"></i>Tidak ada data yang cocok dengan filter</td></tr>';
+        h+='<tr><td colspan="'+(3+CM.length)+'" style="text-align:center;padding:2.5rem;color:var(--mt)"><i class="fa-solid fa-filter" style="margin-right:.5rem;opacity:.5"></i>Tidak ada data yang cocok dengan filter</td></tr>';
     } else {
         var rowIdx=0;
         data.forEach(function(e){
@@ -315,7 +352,6 @@ function rCmp(con){
             else statusHtml='<span class="bl bl-g">COCOK</span>';
             var dateVal=e.v['Tanggal']||'';
             var nameVal=e.v['Nama SPK']||'';
-            // Highlight search match
             var nameDisplay=nameVal;
             if(S.search&&nameVal){
                 var lc=nameVal.toLowerCase(),si=lc.indexOf(S.search);
@@ -329,7 +365,8 @@ function rCmp(con){
             h+='</tr>';
         });
     }
-    h+='</tbody></table>';con.innerHTML=h;
+    h+='</tbody></table>';
+    con.innerHTML=h;
 }
 
 function mkC(vv,iv){
