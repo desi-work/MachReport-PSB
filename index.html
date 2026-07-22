@@ -10,83 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root{--bg:#090b0f;--bg-card:#11141c;--bg-card-alt:#151923;--bg-hover:#191e2b;--border:#1c2130;--border-h:#2a3350;--fg:#e4e8f0;--fg2:#7e8a9e;--mt:#3e4a5c;--ac:#10b981;--ac-d:rgba(16,185,129,.07);--wn:#eab308;--wn-d:rgba(234,179,8,.09);--er:#ef4444;--er-d:rgba(239,68,68,.09);--in:#06b6d4;--in-d:rgba(6,182,212,.07)}
-        *{box-sizing:border-box;margin:0;padding:0}
-        body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
-        .fm{font-family:'JetBrains Mono',monospace}
-        .bg-d{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 700px 500px at 10% 5%,rgba(16,185,129,.03),transparent),radial-gradient(ellipse 500px 400px at 90% 90%,rgba(6,182,212,.025),transparent)}
-        .bg-l{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:64px 64px}
-        .dz{border:2px dashed var(--border);border-radius:12px;padding:1.75rem;text-align:center;cursor:pointer;transition:all .3s;background:var(--bg-card);position:relative;overflow:hidden}
-        .dz:hover,.dz.dov{border-color:var(--ac);background:var(--bg-card-alt)}
-        .dz.ok{border-color:var(--ac);border-style:solid;background:var(--ac-d)}
-        .dz.sv::after{content:'Tersimpan';position:absolute;top:8px;right:10px;font-size:.6rem;color:var(--ac);background:var(--ac-d);padding:2px 8px;border-radius:6px;font-weight:600}
-        .sc{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:all .3s;position:relative;overflow:hidden}
-        .sc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .5s}
-        .sc:hover{border-color:var(--border-h);transform:translateY(-2px)}.sc:hover::after{transform:scaleX(1)}
-        .sc.g::after{background:var(--ac)}.sc.r::after{background:var(--er)}.sc.y::after{background:var(--wn)}.sc.b::after{background:var(--in)}
-        .tb{padding:.6rem 1.15rem;font-size:.82rem;font-weight:500;color:var(--fg2);background:0 0;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap}
-        .tb:hover{color:var(--fg)}.tb.on{color:var(--ac);border-bottom-color:var(--ac)}
-        .dt{width:100%;border-collapse:collapse;font-size:.78rem}
-        .dt thead th{background:var(--bg-card-alt);color:var(--fg2);font-weight:600;text-transform:uppercase;font-size:.65rem;letter-spacing:.05em;padding:.7rem .5rem;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:3;white-space:nowrap}
-        .dt tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
-        .dt tbody tr:hover{background:var(--bg-hover)}
-        .dt td{padding:.5rem;white-space:nowrap;vertical-align:middle}
-        .c-ok{color:#34d399;background:var(--ac-d);border-radius:4px;padding:1px 5px;font-weight:500}
-        .c-diff{border-radius:4px;padding:2px 5px;background:var(--er-d)}
-        .c-diff .cv{color:var(--fg);font-weight:500}
-        .c-diff .ci{color:#f87171;font-size:.7rem}
-        .c-miss{color:var(--wn);background:var(--wn-d);border-radius:4px;padding:1px 5px;font-style:italic;font-weight:500}
-        .c-emp{color:var(--mt)}
-        .bl{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;letter-spacing:.02em}
-        .bl-g{background:var(--ac-d);color:var(--ac)}.bl-r{background:var(--er-d);color:var(--er)}.bl-y{background:var(--wn-d);color:var(--wn)}.bl-b{background:var(--in-d);color:var(--in)}
-        .bp{background:var(--ac);color:#000;font-weight:600;padding:.65rem 1.6rem;border:none;border-radius:10px;cursor:pointer;font-size:.88rem;transition:all .25s;font-family:inherit}
-        .bp:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 4px 20px rgba(16,185,129,.25)}
-        .bp:disabled{opacity:.35;cursor:not-allowed;transform:none;filter:none;box-shadow:none}
-        .bs{background:var(--bg-card);color:var(--fg);font-weight:500;padding:.55rem 1.4rem;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}
-        .bs:hover{border-color:var(--border-h);background:var(--bg-card-alt)}
-        .bg2{background:0 0;color:var(--fg2);font-weight:500;padding:.45rem .9rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.78rem;transition:all .25s;font-family:inherit}
-        .bg2:hover{border-color:var(--er);color:var(--er)}
-        .br{background:var(--in-d);color:var(--in);font-weight:600;padding:.55rem 1.15rem;border:1px solid rgba(6,182,212,.2);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}
-        .br:hover{background:rgba(6,182,212,.14);border-color:rgba(6,182,212,.4)}
-
+        *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}.fm{font-family:'JetBrains Mono',monospace}
+        .bg-d{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 700px 500px at 10% 5%,rgba(16,185,129,.03),transparent),radial-gradient(ellipse 500px 400px at 90% 90%,rgba(6,182,212,.025),transparent)}.bg-l{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:64px 64px}
+        .dz{border:2px dashed var(--border);border-radius:12px;padding:1.75rem;text-align:center;cursor:pointer;transition:all .3s;background:var(--bg-card);position:relative;overflow:hidden}.dz:hover,.dz.dov{border-color:var(--ac);background:var(--bg-card-alt)}.dz.ok{border-color:var(--ac);border-style:solid;background:var(--ac-d)}.dz.sv::after{content:'Tersimpan';position:absolute;top:8px;right:10px;font-size:.6rem;color:var(--ac);background:var(--ac-d);padding:2px 8px;border-radius:6px;font-weight:600}
+        .sc{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:all .3s;position:relative;overflow:hidden}.sc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .5s}.sc:hover{border-color:var(--border-h);transform:translateY(-2px)}.sc:hover::after{transform:scaleX(1)}.sc.g::after{background:var(--ac)}.sc.r::after{background:var(--er)}.sc.y::after{background:var(--wn)}.sc.b::after{background:var(--in)}
+        .tb{padding:.6rem 1.15rem;font-size:.82rem;font-weight:500;color:var(--fg2);background:0 0;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap}.tb:hover{color:var(--fg)}.tb.on{color:var(--ac);border-bottom-color:var(--ac)}
+        .dt{width:100%;border-collapse:collapse;font-size:.78rem}.dt thead th{background:var(--bg-card-alt);color:var(--fg2);font-weight:600;text-transform:uppercase;font-size:.65rem;letter-spacing:.05em;padding:.7rem .5rem;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:3;white-space:nowrap}.dt tbody tr{border-bottom:1px solid var(--border);transition:background .15s}.dt tbody tr:hover{background:var(--bg-hover)}.dt td{padding:.5rem;white-space:nowrap;vertical-align:middle}
+        .c-ok{color:#34d399;background:var(--ac-d);border-radius:4px;padding:1px 5px;font-weight:500}.c-diff{border-radius:4px;padding:2px 5px;background:var(--er-d)}.c-diff .cv{color:var(--fg);font-weight:500}.c-diff .ci{color:#f87171;font-size:.7rem}.c-miss{color:var(--wn);background:var(--wn-d);border-radius:4px;padding:1px 5px;font-style:italic;font-weight:500}.c-emp{color:var(--mt)}.c-na{color:var(--mt);font-size:.7rem}
+        .bl{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;letter-spacing:.02em}.bl-g{background:var(--ac-d);color:var(--ac)}.bl-r{background:var(--er-d);color:var(--er)}.bl-y{background:var(--wn-d);color:var(--wn)}.bl-b{background:var(--in-d);color:var(--in)}
+        .bp{background:var(--ac);color:#000;font-weight:600;padding:.65rem 1.6rem;border:none;border-radius:10px;cursor:pointer;font-size:.88rem;transition:all .25s;font-family:inherit}.bp:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 4px 20px rgba(16,185,129,.25)}.bp:disabled{opacity:.35;cursor:not-allowed;transform:none;filter:none;box-shadow:none}
+        .bs{background:var(--bg-card);color:var(--fg);font-weight:500;padding:.55rem 1.4rem;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}.bs:hover{border-color:var(--border-h);background:var(--bg-card-alt)}
+        .bg2{background:0 0;color:var(--fg2);font-weight:500;padding:.45rem .9rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.78rem;transition:all .25s;font-family:inherit}.bg2:hover{border-color:var(--er);color:var(--er)}
+        .br{background:var(--in-d);color:var(--in);font-weight:600;padding:.55rem 1.15rem;border:1px solid rgba(6,182,212,.2);border-radius:10px;cursor:pointer;font-size:.82rem;transition:all .25s;font-family:inherit}.br:hover{background:rgba(6,182,212,.14);border-color:rgba(6,182,212,.4)}
         .flt-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .6rem;border-radius:12px 12px 0 0;border:1px solid var(--border);border-bottom:none;background:var(--bg-card);flex-wrap:wrap}
-        .flt-chip{padding:.4rem .9rem;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--fg2);font-family:inherit;white-space:nowrap}
-        .flt-chip:hover{border-color:var(--border-h);color:var(--fg);transform:translateY(-1px)}
-        .flt-chip:active{transform:translateY(0)}
-        .fc-a{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-        .fc-a .fc-n{background:var(--bg);color:var(--fg)}
-        .fc-g{background:var(--ac-d);color:var(--ac);border-color:rgba(16,185,129,.3)}
-        .fc-g .fc-n{background:rgba(16,185,129,.2);color:var(--ac)}
-        .fc-r{background:var(--er-d);color:var(--er);border-color:rgba(239,68,68,.3)}
-        .fc-r .fc-n{background:rgba(239,68,68,.2);color:var(--er)}
-        .fc-y{background:var(--wn-d);color:var(--wn);border-color:rgba(234,179,8,.3)}
-        .fc-y .fc-n{background:rgba(234,179,8,.2);color:var(--wn)}
+        .flt-chip{padding:.4rem .9rem;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid var(--border);background:transparent;color:var(--fg2);font-family:inherit;white-space:nowrap}.flt-chip:hover{border-color:var(--border-h);color:var(--fg);transform:translateY(-1px)}.flt-chip:active{transform:translateY(0)}
+        .fc-a{background:var(--fg);color:var(--bg);border-color:var(--fg)}.fc-a .fc-n{background:var(--bg);color:var(--fg)}.fc-g{background:var(--ac-d);color:var(--ac);border-color:rgba(16,185,129,.3)}.fc-g .fc-n{background:rgba(16,185,129,.2);color:var(--ac)}.fc-r{background:var(--er-d);color:var(--er);border-color:rgba(239,68,68,.3)}.fc-r .fc-n{background:rgba(239,68,68,.2);color:var(--er)}.fc-y{background:var(--wn-d);color:var(--wn);border-color:rgba(234,179,8,.3)}.fc-y .fc-n{background:rgba(234,179,8,.2);color:var(--wn)}
         .fc-n{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:10px;font-size:.62rem;font-weight:700;margin-left:.35rem;padding:0 5px}
-        .flt-search{margin-left:auto;position:relative}
-        .flt-search input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.4rem .7rem .4rem 2rem;font-size:.75rem;color:var(--fg);outline:0;font-family:inherit;width:210px;transition:all .2s}
-        .flt-search input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(16,185,129,.1)}
-        .flt-search input::placeholder{color:var(--mt)}
-        .flt-search i{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--mt);font-size:.7rem}
+        .flt-search{margin-left:auto;position:relative}.flt-search input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.4rem .7rem .4rem 2rem;font-size:.75rem;color:var(--fg);outline:0;font-family:inherit;width:210px;transition:all .2s}.flt-search input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(16,185,129,.1)}.flt-search input::placeholder{color:var(--mt)}.flt-search i{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--mt);font-size:.7rem}
         .flt-info{font-size:.7rem;color:var(--fg2);padding:.35rem .6rem;background:var(--bg-card-alt);border-left:1px solid var(--border);border-right:1px solid var(--border)}
-
-        input[type=range]{-webkit-appearance:none;width:130px;height:5px;background:var(--border);border-radius:3px;outline:0}
-        input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--ac);border-radius:50%;cursor:pointer}
-        .toast{padding:.7rem 1.15rem;border-radius:10px;font-size:.82rem;font-weight:500;animation:ti .35s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);display:flex;align-items:center;gap:.5rem}
-        .t-g{background:#14532d;color:#86efac;border:1px solid #166534}
-        .t-r{background:#450a0a;color:#fca5a5;border:1px solid #7f1d1d}
-        .t-i{background:#083344;color:#67e8f9;border:1px solid #155e75}
-        .t-w{background:#422006;color:#fde047;border:1px solid #713f12}
-        @keyframes ti{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        .fu{animation:fu .4s ease forwards}
+        input[type=range]{-webkit-appearance:none;width:130px;height:5px;background:var(--border);border-radius:3px;outline:0}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--ac);border-radius:50%;cursor:pointer}
+        .toast{padding:.7rem 1.15rem;border-radius:10px;font-size:.82rem;font-weight:500;animation:ti .35s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);display:flex;align-items:center;gap:.5rem}.t-g{background:#14532d;color:#86efac;border:1px solid #166534}.t-r{background:#450a0a;color:#fca5a5;border:1px solid #7f1d1d}.t-i{background:#083344;color:#67e8f9;border:1px solid #155e75}.t-w{background:#422006;color:#fde047;border:1px solid #713f12}
+        @keyframes ti{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.fu{animation:fu .4s ease forwards}
         .tw{max-height:68vh;overflow:auto;border-radius:0 0 12px 12px;border:1px solid var(--border);border-top:none;background:var(--bg-card)}
-        .db{height:7px;border-radius:4px;background:var(--border);overflow:hidden}
-        .dbf{height:100%;border-radius:4px;transition:width .6s ease}
+        .db{height:7px;border-radius:4px;background:var(--border);overflow:hidden}.dbf{height:100%;border-radius:4px;transition:width .6s ease}
         .sb{background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(16,185,129,.05));border:1px solid rgba(6,182,212,.18);border-radius:12px;padding:.9rem 1.15rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.15rem}
         ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:0 0}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--mt)}
-        .rl-y{border-left:3px solid var(--wn)!important}
-        .rl-r{border-left:3px solid var(--er)!important}
-        .rl-g{border-left:3px solid var(--ac)!important}
-        .rl-b{border-left:3px solid var(--in)!important}
+        .rl-y{border-left:3px solid var(--wn)!important}.rl-r{border-left:3px solid var(--er)!important}.rl-g{border-left:3px solid var(--ac)!important}.rl-b{border-left:3px solid var(--in)!important}
+        .col-det{font-size:.68rem;color:var(--fg2);margin-top:.4rem;line-height:1.5;max-height:60px;overflow-y:auto}
         @media(max-width:768px){.sg{grid-template-columns:repeat(2,1fr)!important}.ug{grid-template-columns:1fr!important}.sbar{flex-direction:column;align-items:flex-start!important}.sb{flex-direction:column;text-align:center}.flt-bar{flex-direction:column;align-items:stretch}.flt-search{margin-left:0;margin-top:.3rem}.flt-search input{width:100%}}
     </style>
 </head>
@@ -115,6 +65,7 @@
                 <p class="text-xs text-[var(--mt)] mt-1">.xlsx, .xls, .csv</p>
             </div>
             <div id="vIf" class="hidden mt-2 text-xs text-[var(--fg2)] fm"></div>
+            <div id="vCols" class="hidden col-det fm"></div>
         </div>
         <div>
             <div class="flex items-center gap-2 mb-2"><span class="w-2 h-2 rounded-full bg-cyan-500"></span><span class="text-xs font-semibold text-[var(--fg2)] uppercase tracking-wider">File Internal (Pembanding)</span></div>
@@ -125,6 +76,7 @@
                 <p class="text-xs text-[var(--mt)] mt-1">.xlsx, .xls, .csv</p>
             </div>
             <div id="iIf" class="hidden mt-2 text-xs text-[var(--fg2)] fm"></div>
+            <div id="iCols" class="hidden col-det fm"></div>
         </div>
     </section>
     <section class="flex flex-wrap items-center gap-5 mb-5 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] sbar">
@@ -144,8 +96,6 @@
             <button class="tb" data-t="ext" onclick="swT('ext')"><i class="fa-solid fa-circle-plus mr-1.5 text-xs"></i>Ekstra di Internal <span id="nE" class="ml-1 opacity-50"></span></button>
             <button class="tb" data-t="dsc" onclick="swT('dsc')"><i class="fa-solid fa-chart-bar mr-1.5 text-xs"></i>Ringkasan Selisih</button>
         </div>
-
-        <!-- FILTER BAR — STATIS, tidak pernah di-rebuild -->
         <div id="fltBar" class="hidden" style="margin-bottom:0">
             <div class="flt-bar">
                 <button class="flt-chip fc-a" data-f="all" onclick="setFlt('all')">Semua<span class="fc-n" id="fcA">0</span></button>
@@ -156,7 +106,6 @@
             </div>
             <div id="fltInfo" class="hidden flt-info"></div>
         </div>
-
         <div id="tCn" class="tw"></div>
         <div class="flex justify-between items-center mt-4">
             <p class="text-xs text-[var(--mt)]" id="rNt"></p>
@@ -167,29 +116,92 @@
 <div id="tCt" class="fixed top-5 right-5 z-50 flex flex-col gap-2" style="max-width:380px"></div>
 
 <script>
-var SK='spk_m_v5',S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:'',flt:'all',search:''};
-var CM=[
-    {v:'No Husbel',i:'No Husbel',l:'No Husbel'},
-    {v:'Meter Awal',i:'Meter Awal',l:'Meter Awal'},
-    {v:'Meter Akhir',i:'Meter Akhir',l:'Meter Akhir'},
-    {v:'Total Tarikan',i:'Total Tarikan',l:'Total Tarikan'},
-    {v:'Dead End',i:'Dead End',l:'Dead End'},
-    {v:'Suspension',i:'Suspension',l:'Suspension'},
-    {v:'Palang Koil',i:'Palang Koil',l:'Palang Koil'},
-    {v:'Galian',i:'Galian (meter)',l:'Galian'},
-    {v:'HDPE',i:'HDPE (meter)',l:'HDPE'},
-    {v:'Paving',i:'Bongkar Paving (meter)',l:'Paving'},
-    {v:'Conduit',i:'Pasang Pipa Conduit (meter)',l:'Conduit'},
-    {v:'Fleksibel',i:'Fleksibel (meter)',l:'Fleksibel'},
-    {v:'Jenis',i:'Jenis Kabel',l:'Jenis'}
+var SK='spk_m_v6';
+var S={vd:[],id:[],res:null,tab:'cmp',vfn:'',ifn:'',flt:'all',search:''};
+
+// ============================================================
+// DEFINISI KOLOM — keyword untuk deteksi otomatis
+// ============================================================
+var CDEFS=[
+    {l:'No Husbel',kw:'husbel'},
+    {l:'Meter Awal',kw:'meter awal'},
+    {l:'Meter Akhir',kw:'meter akhir'},
+    {l:'Total Tarikan',kw:'total tarikan'},
+    {l:'Dead End',kw:'dead end'},
+    {l:'Suspension',kw:'suspension'},
+    {l:'Palang Koil',kw:'palang koil'},
+    {l:'Galian',kw:'galian'},
+    {l:'HDPE',kw:'hdpe'},
+    {l:'Paving',kw:'paving'},
+    {l:'Conduit',kw:'conduit'},
+    {l:'Fleksibel',kw:'fleksibel'},
+    {l:'Bobok Tembok',kw:'bobok'},
+    {l:'Padestal',kw:'padestal'},
+    {l:'Jenis',kw:'jenis'}
+];
+var IEXTRA=[
+    {l:'No Tiang',kw:'no tiang'},
+    {l:'Tiang 7M',kw:'tiang 7m'},
+    {l:'Tiang 9M',kw:'tiang 9m'}
 ];
 var BL={jan:1,feb:2,mar:3,apr:4,mei:5,may:5,jun:6,jul:7,agu:8,aug:8,sep:9,okt:10,oct:10,nov:11,des:12,dec:12};
 var CLS_MAP={all:'fc-a',ok:'fc-g',diff:'fc-r',miss:'fc-y'};
+
+// Deteksi kolom — disimpan per file
+var vDC='',vNC='',vCM={},iDC='',iNC='',iCM={},iEX={};
+// compCols = kolom yang ada di KEDUA file (untuk perbandingan)
+var compCols=[];
+
 function $(id){return document.getElementById(id)}
 
+// ============================================================
+// DETEKSI OTOMATIS KOLOM DARI HEADER FILE
+// ============================================================
+function findCol(headers,kw){return headers.find(function(h){return h.toLowerCase().indexOf(kw)!==-1})||null}
+function isHdrVal(v){if(!v)return false;var s=String(v).trim().toUpperCase();return s==='TANGGAL'||s==='TANGGALKU'||s==='HEAD'||s==='NAMA SPK'||s==='NO'}
+function detectCols(data){
+    if(!data.length)return{dc:null,nc:null,cm:{},ex:{}};
+    var h=Object.keys(data[0]);
+    var dc=findCol(h,'tanggal');
+    var nc=findCol(h,'nama spk')||findCol(h,'spk');
+    var cm={};CDEFS.forEach(function(d){var f=findCol(h,d.kw);if(f)cm[d.l]=f});
+    return{dc:dc,nc:nc,cm:cm}
+}
+function detectIntCols(data){
+    var r=detectCols(data);
+    var ex={};IEXTRA.forEach(function(d){var h=Object.keys(data[0]||{});var f=findCol(h,d.kw);if(f)ex[d.l]=f});
+    r.ex=ex;return r
+}
+
+// ============================================================
+// PARSE EXCEL
+// ============================================================
 function parseXLS(f){return new Promise(function(ok,no){var r=new FileReader;r.onload=function(e){try{var d=new Uint8Array(e.target.result),w=XLSX.read(d,{type:'array'});ok(XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]],{defval:'',raw:false}))}catch(err){no(err)}};r.onerror=function(){no(new Error('Gagal baca'))};r.readAsArrayBuffer(f)})}
 
-function nD(v){if(!v||v==='*'||v==='Total')return '';var s=String(v).trim(),m;m=s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];if(b)return m[3]+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}m=s.match(/^(\d{1,2})[-\/]([A-Za-z]+)[-\/](\d{2,4})$/);if(m){var b=BL[m[2].toLowerCase().substring(0,3)];var y=m[3].length===2?(parseInt(m[3])>50?'19'+m[3]:'20'+m[3]):m[3];if(b)return y+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}var num=parseFloat(s);if(!isNaN(num)&&num>40000&&num<60000){var dt=new Date((num-25569)*86400000);if(!isNaN(dt))return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0')}return s}
+// ============================================================
+// NORMALISASI TANGGAL — mendukung banyak format
+// ============================================================
+function nD(v){
+    if(!v||v==='*'||v==='Total')return '';
+    var s=String(v).trim(),m;
+    // "Wednesday, July 01, 2026"
+    m=s.match(/^[A-Za-z]+,\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})$/);
+    if(m){var b=BL[m[1].toLowerCase().substring(0,3)];if(b)return m[3]+'-'+String(b).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0')}
+    // "16 Jun 2026"
+    m=s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
+    if(m){var b=BL[m[2].toLowerCase().substring(0,3)];if(b)return m[3]+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}
+    // "16-Jun-26" atau "16/Jun/26"
+    m=s.match(/^(\d{1,2})[-\/]([A-Za-z]+)[-\/](\d{2,4})$/);
+    if(m){var b=BL[m[2].toLowerCase().substring(0,3)];var y=m[3].length===2?(parseInt(m[3])>50?'19'+m[3]:'20'+m[3]):m[3];if(b)return y+'-'+String(b).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0')}
+    // "01/07/2026" atau "2026-07-01"
+    m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    if(m)return s;
+    m=s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/);
+    if(m)return m[3]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0');
+    // Angka serial Excel
+    var num=parseFloat(s);if(!isNaN(num)&&num>40000&&num<60000){var dt=new Date((num-25569)*86400000);if(!isNaN(dt))return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0')}
+    return s;
+}
 function nN(v){if(!v||v==='*')return '';return String(v).trim().toLowerCase().replace(/\s+/g,' ').replace(/[()]/g,'')}
 function nH(v){if(!v||v==='*'||v==='')return '';var s=String(v).trim().toLowerCase();s=s.replace(/^hs\s+/i,'');s=s.replace(/\s+/g,'');s=s.replace(/fa6c[-:]/g,'fa6-');return s}
 function nNum(v){if(v===null||v===undefined||v==='*'||v==='')return '';var s=String(v).trim().toLowerCase().replace(/m$/g,'').trim();if(s===''||s==='-')return '';var n=parseFloat(s);return isNaN(n)?s:n}
@@ -197,15 +209,68 @@ function vM(a,b){var n1=nNum(a),n2=nNum(b);if(n1===''&&n2==='')return true;if(n1
 function lev(a,b){var m=a.length,n=b.length;if(!m)return n;if(!n)return m;var d=[];for(var i=0;i<=m;i++){d[i]=[i];for(var j=1;j<=n;j++){if(!i){d[0][j]=j;continue}d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1))}}return d[m][n]}
 function sim(a,b){if(a===b)return 1;if(!a||!b)return 0;var l=a.length>=b.length?a:b,s=a.length<b.length?a:b;if(l.indexOf(s)!==-1){var r=s.length/l.length;if(r>.45)return .82+r*.18}var ml=Math.max(a.length,b.length);return ml?Math.max(0,1-lev(a,b)/ml):1}
 
-function svD(){try{localStorage.setItem(SK,JSON.stringify({vd:S.vd,id:S.id,vfn:S.vfn,ifn:S.ifn,t:new Date().toISOString()}))}catch(e){}}
+// ============================================================
+// STORAGE
+// ============================================================
+function svD(){try{localStorage.setItem(SK,JSON.stringify({vd:S.vd,id:S.id,vfn:S.vfn,ifn:S.ifn,vDC:vDC,vNC:vNC,vCM:vCM,iDC:iDC,iNC:iNC,iCM:iCM,iEX:iEX,t:new Date().toISOString()}))}catch(e){}}
 function gtSv(){try{var r=localStorage.getItem(SK);return r?JSON.parse(r):null}catch(e){return null}}
-function ldSv(){var d=gtSv();if(!d){toast('Tidak ada data tersimpan','w');return}S.vd=d.vd||[];S.id=d.id||[];S.vfn=d.vfn||'';S.ifn=d.ifn||'';if(S.vd.length)uZ('v',S.vfn||'vendor.xlsx',S.vd.length,1);if(S.id.length)uZ('i',S.ifn||'internal.xlsx',S.id.length,1);chk();$('sBan').classList.add('hidden');toast('Data dimuat dari penyimpanan','g')}
-function clSv(){localStorage.removeItem(SK);$('sBan').classList.add('hidden');['v','i'].forEach(function(t){var z=$(t+'Dz');z.classList.remove('ok','sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-file-excel text-3xl text-[var(--mt)]"></i>';$(t+'Tx').innerHTML='Seret file atau klik untuk upload';$(t+'If').classList.add('hidden')});S.vd=[];S.id=[];S.vfn='';S.ifn='';S.res=null;$('rSec').classList.add('hidden');$('fltBar').classList.add('hidden');chk();toast('Data tersimpan dihapus','i')}
+function ldSv(){var d=gtSv();if(!d){toast('Tidak ada data tersimpan','w');return}S.vd=d.vd||[];S.id=d.id||[];S.vfn=d.vfn||'';S.ifn=d.ifn||'';vDC=d.vDC||'';vNC=d.vNC||'';vCM=d.vCM||{};iDC=d.iDC||'';iNC=d.iNC||'';iCM=d.iCM||{};iEX=d.iEX||{};compCols=buildComp();if(S.vd.length)uZ('v',S.vfn||'vendor.xlsx',S.vd.length,1);if(S.id.length)uZ('i',S.ifn||'internal.xlsx',S.id.length,1);chk();$('sBan').classList.add('hidden');toast('Data dimuat dari penyimpanan','g')}
+function clSv(){localStorage.removeItem(SK);$('sBan').classList.add('hidden');['v','i'].forEach(function(t){var z=$(t+'Dz');z.classList.remove('ok','sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-file-excel text-3xl text-[var(--mt)]"></i>';$(t+'Tx').innerHTML='Seret file atau klik untuk upload';$(t+'If').classList.add('hidden');$(t+'Cols').classList.add('hidden')});S.vd=[];S.id=[];S.vfn='';S.ifn='';S.res=null;vDC=vNC='';vCM={};iDC=iNC='';iCM={};iEX={};compCols=[];$('rSec').classList.add('hidden');$('fltBar').classList.add('hidden');chk();toast('Data tersimpan dihapus','i')}
 function chkSv(){var d=gtSv();if(!d)return;var vc=(d.vd||[]).length,ic=(d.id||[]).length;if(!vc&&!ic)return;var dt=d.t?new Date(d.t):null;var ds=dt?dt.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';var p=[];if(vc)p.push('Vendor: '+vc+' baris');if(ic)p.push('Internal: '+ic+' baris');$('sInf').textContent=p.join(' \u00b7 ')+(ds?' \u2014 '+ds:'');$('sBan').classList.remove('hidden')}
 
-function hFile(inp,t){var f=inp.files[0];if(!f)return;parseXLS(f).then(function(data){var dc=t==='v'?'Tanggal':'TANGGAL';var fl=data.filter(function(r){return r[dc]&&r[dc]!=='Total'});if(t==='v'){S.vd=fl;S.vfn=f.name;uZ('v',f.name,fl.length,0)}else{S.id=fl;S.ifn=f.name;uZ('i',f.name,fl.length,0)}svD();$('sBan').classList.add('hidden');toast(f.name+' dimuat ('+fl.length+' baris)','g');chk()}).catch(function(e){toast('Gagal parse: '+e.message,'r')})}
+// ============================================================
+// UPLOAD FILE + DETEKSI KOLOM
+// ============================================================
+function hFile(inp,t){
+    var f=inp.files[0];if(!f)return;
+    parseXLS(f).then(function(data){
+        // Filter baris header/bukan data
+        var dc,nameCol,cm;
+        if(t==='v'){
+            var det=detectCols(data);dc=det.dc;nameCol=det.nc;cm=det.cm;
+            vDC=dc;vNC=nameCol;vCM=cm;
+        }else{
+            var det=detectIntCols(data);dc=det.dc;nameCol=det.nc;cm=det.cm;
+            iDC=dc;iNC=nameCol;iCM=cm;iEX=det.ex;
+        }
+        // Filter baris valid
+        var fl=data.filter(function(r){
+            if(!dc)return false;
+            var val=r[dc];if(!val||isHdrVal(val))return false;return true;
+        });
+        if(t==='v'){S.vd=fl;S.vfn=f.name;uZ('v',f.name,fl.length,0)}
+        else{S.id=fl;S.ifn=f.name;uZ('i',f.name,fl.length,0)}
+        compCols=buildComp();
+        // Tampilkan kolom yang terdeteksi
+        showDetectedCols(t,dc,nameCol,cm,t==='i'?iEX:{});
+        svD();$('sBan').classList.add('hidden');
+        toast(f.name+' dimuat ('+fl.length+' baris)','g');chk();
+    }).catch(function(e){toast('Gagal parse: '+e.message,'r')});
+}
+
+function buildComp(){
+    var cc=[];
+    CDEFS.forEach(function(d){
+        var vk=vCM[d.l],ik=iCM[d.l];
+        if(vk&&ik)cc.push({l:d.l,v:vk,i:ik});
+    });
+    return cc;
+}
+
+function showDetectedCols(t,dc,nc,cm,ex){
+    var el=$(t+'Cols');el.classList.remove('hidden');
+    var parts=[];
+    if(dc)parts.push('Tanggal: <b>'+dc+'</b>');
+    if(nc)parts.push('SPK: <b>'+nc+'</b>');
+    var colNames=Object.values(cm);if(colNames.length)parts.push('Kolom: '+colNames.join(', '));
+    if(ex){var exn=Object.values(ex);if(exn.length)parts.push('Extra: '+exn.join(', '))}
+    if(!dc)parts.push('<span style="color:var(--er)">Kolom Tanggal TIDAK ditemukan!</span>');
+    if(!nc)parts.push('<span style="color:var(--er)">Kolom Nama SPK TIDAK ditemukan!</span>');
+    el.innerHTML=parts.join(' &middot; ');
+}
+
 function uZ(t,fn,c,fs){var z=$(t+'Dz');z.classList.add('ok');if(fs)z.classList.add('sv');else z.classList.remove('sv');$(t+'Ic').innerHTML='<i class="fa-solid fa-circle-check text-3xl text-[var(--ac)]"></i>';$(t+'Tx').innerHTML='<span class="font-semibold text-[var(--fg)]">'+fn+'</span>';var inf=$(t+'If');inf.classList.remove('hidden');inf.textContent=c+' baris data'}
-function chk(){$('goB').disabled=!(S.vd.length>0&&S.id.length>0)}
+function chk(){$('goB').disabled=!(S.vd.length>0&&S.id.length>0&&vDC&&vNC&&iDC&&iNC)}
 
 ['v','i'].forEach(function(t){var z=$(t+'Dz'),inp=$(t+'In');z.addEventListener('dragover',function(e){e.preventDefault();z.classList.add('dov')});z.addEventListener('dragleave',function(){z.classList.remove('dov')});z.addEventListener('drop',function(e){e.preventDefault();z.classList.remove('dov');var f=e.dataTransfer.files[0];if(f){var dt=new DataTransfer();dt.items.add(f);inp.files=dt.files;hFile(inp,t)}})});
 
@@ -216,20 +281,20 @@ function run(){
     var th=parseFloat($('fzT').value)||.65;
     var R={all:[],miss:[],extra:[],disc:{}};
     var used={};var ibd={};
-    S.id.forEach(function(r,idx){var dk=nD(r['TANGGAL']);if(!dk)return;if(!ibd[dk])ibd[dk]=[];ibd[dk].push({r:r,idx:idx})});
+    S.id.forEach(function(r,idx){var dk=nD(r[iDC]);if(!dk)return;if(!ibd[dk])ibd[dk]=[];ibd[dk].push({r:r,idx:idx})});
     S.vd.forEach(function(vr,vi){
-        var vd=nD(vr['Tanggal']),vn=nN(vr['Nama SPK']),vh=nH(vr['No Husbel']);
+        var vd=nD(vr[vDC]),vn=nN(vr[vNC]),vh=nH(vr[vCM['No Husbel']||'No Husbel']);
         var entry={v:vr,internal:null,diffCount:0,diffCols:[]};
         if(!vd){entry.internal=null;R.all.push(entry);R.miss.push({v:vr,idx:vi,reason:'Tanggal kosong'});return}
         var cands=(ibd[vd]||[]).filter(function(c){return !used[c.idx]});
         if(!cands.length){entry.internal=null;R.all.push(entry);R.miss.push({v:vr,idx:vi,reason:'Tidak ada di Internal pada tanggal ini'});return}
         var bs=-1,bc=null;
-        for(var ci=0;ci<cands.length;ci++){var c=cands[ci];var in2=nN(c.r['NAMA SPK']),ih=nH(c.r['No Husbel']);var ns=sim(vn,in2);var hb=(vh&&ih&&vh===ih)?.25:0;var sc=ns+hb;if(sc>bs){bs=sc;bc=c}}
-        if(bc&&bs>=th){used[bc.idx]=1;entry.internal=bc.r;entry.matchType=bs>=1?'Eksak':'Fuzzy';entry.score=bs;CM.forEach(function(col){if(!vM(vr[col.v],bc.r[col.i])){entry.diffCount++;entry.diffCols.push(col.l)}})}
+        for(var ci=0;ci<cands.length;ci++){var c=cands[ci];var in2=nN(c.r[iNC]),ih=nH(c.r[iCM['No Husbel']||'No Husbel']);var ns=sim(vn,in2);var hb=(vh&&ih&&vh===ih)?.25:0;var sc=ns+hb;if(sc>bs){bs=sc;bc=c}}
+        if(bc&&bs>=th){used[bc.idx]=1;entry.internal=bc.r;entry.matchType=bs>=1?'Eksak':'Fuzzy';entry.score=bs;compCols.forEach(function(col){if(!vM(vr[col.v],bc.r[col.i])){entry.diffCount++;entry.diffCols.push(col.l)}})}
         R.all.push(entry);
     });
-    S.id.forEach(function(r,idx){var dk=nD(r['TANGGAL']);if(!dk)return;if(!used[idx])R.extra.push({r:r,idx:idx})});
-    CM.forEach(function(col){var t=0,m=0,mm=0,be=0;R.all.forEach(function(e){if(!e.internal)return;var n1=nNum(e.v[col.v]),n2=nNum(e.internal[col.i]);if(n1===''&&n2===''){be++;return}t++;if(vM(e.v[col.v],e.internal[col.i]))m++;else mm++});R.disc[col.l]={t:t,m:m,mm:mm,be:be}});
+    S.id.forEach(function(r,idx){var dk=nD(r[iDC]);if(!dk)return;if(!used[idx])R.extra.push({r:r,idx:idx})});
+    compCols.forEach(function(col){var t=0,m=0,mm=0,be=0;R.all.forEach(function(e){if(!e.internal)return;var n1=nNum(e.v[col.v]),n2=nNum(e.internal[col.i]);if(n1===''&&n2===''){be++;return}t++;if(vM(e.v[col.v],e.internal[col.i]))m++;else mm++});R.disc[col.l]={t:t,m:m,mm:mm,be:be}});
     S.res=R;S.flt='all';S.search='';$('fltSrc').value='';
     $('rSec').classList.remove('hidden');$('rSec').scrollIntoView({behavior:'smooth',block:'start'});renderAll();
     var paired=R.all.filter(function(e){return e.internal}).length;
@@ -237,173 +302,80 @@ function run(){
 }
 
 // ============================================================
-// HITUNG STATUS
+// FILTER
 // ============================================================
-function cntSt(){
-    var r=S.res;if(!r)return{all:0,ok:0,diff:0,miss:0};
-    var ok=0,diff=0,miss=0;
-    r.all.forEach(function(e){if(!e.internal)miss++;else if(e.diffCount>0)diff++;else ok++});
-    return{all:r.all.length,ok:ok,diff:diff,miss:miss};
-}
+function cntSt(){var r=S.res;if(!r)return{all:0,ok:0,diff:0,miss:0};var ok=0,diff=0,miss=0;r.all.forEach(function(e){if(!e.internal)miss++;else if(e.diffCount>0)diff++;else ok++});return{all:r.all.length,ok:ok,diff:diff,miss:miss}}
+function updFltBar(){var cs=cntSt();$('fcA').textContent=cs.all;$('fcO').textContent=cs.ok;$('fcD').textContent=cs.diff;$('fcM').textContent=cs.miss;document.querySelectorAll('.flt-chip').forEach(function(btn){btn.classList.remove('fc-a','fc-g','fc-r','fc-y');var f=btn.dataset.f;if(f===S.flt)btn.classList.add(CLS_MAP[f])})}
+function setFlt(val){S.flt=val;updFltBar();rCmpTable()}
+function setSrc(val){S.search=val.toLowerCase();rCmpTable()}
 
 // ============================================================
-// UPDATE FILTER BAR — hanya update class & angka, tidak rebuild
+// RENDER
 // ============================================================
-function updFltBar(){
-    var cs=cntSt();
-    $('fcA').textContent=cs.all;
-    $('fcO').textContent=cs.ok;
-    $('fcD').textContent=cs.diff;
-    $('fcM').textContent=cs.miss;
-    // Update class chip aktif
-    document.querySelectorAll('.flt-chip').forEach(function(btn){
-        // Hapus semua class aktif
-        btn.classList.remove('fc-a','fc-g','fc-r','fc-y');
-        // Tambahkan class aktif jika sesuai
-        var f=btn.dataset.f;
-        if(f===S.flt) btn.classList.add(CLS_MAP[f]);
-    });
-}
-
-// ============================================================
-// SET FILTER — ganti nilai & update tampilan
-// ============================================================
-function setFlt(val){
-    S.flt=val;
-    updFltBar();   // update chip aktif
-    rCmpTable();   // hanya re-render tabel
-}
-
-function setSrc(val){
-    S.search=val.toLowerCase();
-    rCmpTable();
-}
-
-// ============================================================
-// RENDER UTAMA
-// ============================================================
-function renderAll(){rSt();rTab();uTC();var dc=0;CM.forEach(function(c){dc+=S.res.disc[c.l].mm});$('rNt').textContent=S.vd.length+' baris vendor \u00b7 '+dc+' selisih nilai ditemukan'}
-
+function renderAll(){rSt();rTab();uTC();var dc=0;compCols.forEach(function(c){dc+=S.res.disc[c.l].mm});$('rNt').textContent=S.vd.length+' baris vendor \u00b7 '+dc+' selisih nilai ditemukan'}
 function rSt(){
     var r=S.res;var paired=r.all.filter(function(e){return e.internal});var diffed=r.all.filter(function(e){return e.internal&&e.diffCount>0});var perfect=paired.length-diffed.length;
-    var cards=[
-        {l:'Total Vendor',v:S.vd.length,ic:'fa-file-lines',c:'g'},
-        {l:'Cocok Sempurna',v:perfect,ic:'fa-check',c:'g'},
-        {l:'Ada Selisih',v:diffed.length,ic:'fa-not-equal',c:'r'},
-        {l:'Tidak Ada di Internal',v:r.miss.length,ic:'fa-link-slash',c:'y'},
-        {l:'Ekstra di Internal',v:r.extra.length,ic:'fa-circle-plus',c:'b'},
-        {l:'Total Internal',v:S.id.length,ic:'fa-file-lines',c:'b'}
-    ];
+    var cards=[{l:'Total Vendor',v:S.vd.length,ic:'fa-file-lines',c:'g'},{l:'Cocok Sempurna',v:perfect,ic:'fa-check',c:'g'},{l:'Ada Selisih',v:diffed.length,ic:'fa-not-equal',c:'r'},{l:'Tidak Ada di Internal',v:r.miss.length,ic:'fa-link-slash',c:'y'},{l:'Ekstra di Internal',v:r.extra.length,ic:'fa-circle-plus',c:'b'},{l:'Total Internal',v:S.id.length,ic:'fa-file-lines',c:'b'}];
     $('stC').innerHTML=cards.map(function(c,i){return'<div class="sc '+c.c+' fu" style="animation-delay:'+i*60+'ms"><div class="flex items-center justify-between mb-2"><span class="text-[.62rem] font-semibold text-[var(--fg2)] uppercase tracking-wider leading-tight">'+c.l+'</span><i class="fa-solid '+c.ic+' text-xs text-[var(--mt)]"></i></div><div class="text-2xl font-bold fm">'+c.v+'</div></div>'}).join('');
 }
-
 function uTC(){var r=S.res;$('nC').textContent='('+r.all.length+')';$('nM').textContent='('+r.miss.length+')';$('nE').textContent='('+r.extra.length+')'}
-function swT(t){
-    S.tab=t;
-    document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});
-    // Tampilkan/sembunyikan filter bar
-    if(t==='cmp'){$('fltBar').classList.remove('hidden');updFltBar()}
-    else{$('fltBar').classList.add('hidden')}
-    rTab();
-}
+function swT(t){S.tab=t;document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});if(t==='cmp'){$('fltBar').classList.remove('hidden');updFltBar()}else{$('fltBar').classList.add('hidden')}rTab()}
 function rTab(){var c=$('tCn');switch(S.tab){case'cmp':rCmpTable();break;case'mis':rMis(c);break;case'ext':rExt(c);break;case'dsc':rDsc(c);break}}
 
 // ============================================================
-// TAB PERBANDINGAN — HANYA RENDER TABEL, filter bar tetap
+// TAB PERBANDINGAN
 // ============================================================
 function rCmpTable(){
-    var con=$('tCn');
-    var r=S.res;if(!r||!r.all.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
-
-    // Filter data
+    var con=$('tCn');var r=S.res;if(!r||!r.all.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data</div>';return}
     var data=r.all.filter(function(e){
         if(S.flt==='ok'&&(!e.internal||e.diffCount>0))return false;
         if(S.flt==='diff'&&(!e.internal||e.diffCount===0))return false;
         if(S.flt==='miss'&&e.internal)return false;
-        if(S.search){var name=(e.v['Nama SPK']||'').toLowerCase();if(name.indexOf(S.search)===-1)return false}
+        if(S.search){var name=(e.v[vNC]||'').toLowerCase();if(name.indexOf(S.search)===-1)return false}
         return true;
     });
-
-    // Info jumlah
-    var cs=cntSt();
-    var infoEl=$('fltInfo');
-    if(data.length!==cs.all){
-        infoEl.classList.remove('hidden');
-        infoEl.textContent='Menampilkan '+data.length+' dari '+cs.all+' baris';
-    } else {
-        infoEl.classList.add('hidden');
-    }
-
-    // Build tabel
+    var cs=cntSt();var infoEl=$('fltInfo');
+    if(data.length!==cs.all){infoEl.classList.remove('hidden');infoEl.textContent='Menampilkan '+data.length+' dari '+cs.all+' baris'}else{infoEl.classList.add('hidden')}
     var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Status</th>';
-    CM.forEach(function(c){h+='<th>'+c.l+'</th>'});h+='</tr></thead><tbody>';
-
-    if(!data.length){
-        h+='<tr><td colspan="'+(3+CM.length)+'" style="text-align:center;padding:2.5rem;color:var(--mt)"><i class="fa-solid fa-filter" style="margin-right:.5rem;opacity:.5"></i>Tidak ada data yang cocok dengan filter</td></tr>';
-    } else {
-        var rowIdx=0;
-        data.forEach(function(e){
-            rowIdx++;
-            var hasI=!!e.internal;
-            var rowCls=hasI?(e.diffCount>0?'rl-r':'rl-g'):'rl-y';
-            var statusHtml;
-            if(!hasI) statusHtml='<span class="bl bl-y">TIDAK ADA DI INTERNAL</span>';
-            else if(e.diffCount>0) statusHtml='<span class="bl bl-r">SELISIH ('+e.diffCount+')</span>';
-            else statusHtml='<span class="bl bl-g">COCOK</span>';
-            var dateVal=e.v['Tanggal']||'';
-            var nameVal=e.v['Nama SPK']||'';
-            var nameDisplay=nameVal;
-            if(S.search&&nameVal){
-                var lc=nameVal.toLowerCase(),si=lc.indexOf(S.search);
-                if(si!==-1){nameDisplay=nameVal.substring(0,si)+'<mark style="background:rgba(234,179,8,.25);color:var(--wn);border-radius:2px;padding:0 2px">'+nameVal.substring(si,si+S.search.length)+'</mark>'+nameVal.substring(si+S.search.length)}
-            }
-            h+='<tr class="'+rowCls+'"><td class="fm text-[var(--mt)]">'+rowIdx+'</td><td class="fm text-xs">'+dateVal+'</td><td class="text-xs max-w-[200px] truncate" title="'+nameVal+'">'+nameDisplay+'</td><td>'+statusHtml+'</td>';
-            CM.forEach(function(col){
-                if(!hasI){var vv=e.v[col.v];var dv=(!vv||vv==='*'||vv==='')?'-':vv;h+='<td class="fm text-center"><span class="c-miss">'+dv+'</span></td>'}
-                else{h+=mkC(e.v[col.v],e.internal[col.i])}
-            });
-            h+='</tr>';
-        });
-    }
-    h+='</tbody></table>';
-    con.innerHTML=h;
+    compCols.forEach(function(c){h+='<th>'+c.l+'</th>'});h+='</tr></thead><tbody>';
+    if(!data.length){h+='<tr><td colspan="'+(3+compCols.length)+'" style="text-align:center;padding:2.5rem;color:var(--mt)"><i class="fa-solid fa-filter" style="margin-right:.5rem;opacity:.5"></i>Tidak ada data yang cocok dengan filter</td></tr>'}
+    else{var ri=0;data.forEach(function(e){ri++;var hasI=!!e.internal;var rowCls=hasI?(e.diffCount>0?'rl-r':'rl-g'):'rl-y';var statusHtml;if(!hasI)statusHtml='<span class="bl bl-y">TIDAK ADA DI INTERNAL</span>';else if(e.diffCount>0)statusHtml='<span class="bl bl-r">SELISIH ('+e.diffCount+')</span>';else statusHtml='<span class="bl bl-g">COCOK</span>';
+    var dateVal=e.v[vDC]||'';var nameVal=e.v[vNC]||'';var nameDisplay=nameVal;
+    if(S.search&&nameVal){var lc=nameVal.toLowerCase(),si=lc.indexOf(S.search);if(si!==-1)nameDisplay=nameVal.substring(0,si)+'<mark style="background:rgba(234,179,8,.25);color:var(--wn);border-radius:2px;padding:0 2px">'+nameVal.substring(si,si+S.search.length)+'</mark>'+nameVal.substring(si+S.search.length)}
+    h+='<tr class="'+rowCls+'"><td class="fm text-[var(--mt)]">'+ri+'</td><td class="fm text-xs">'+dateVal+'</td><td class="text-xs max-w-[200px] truncate" title="'+nameVal+'">'+nameDisplay+'</td><td>'+statusHtml+'</td>';
+    compCols.forEach(function(col){if(!hasI){var vv=e.v[col.v];var dv=(!vv||vv==='*'||vv==='')?'-':vv;h+='<td class="fm text-center"><span class="c-miss">'+dv+'</span></td>'}else{h+=mkC(e.v[col.v],e.internal[col.i])}});h+='</tr>'})}
+    h+='</tbody></table>';con.innerHTML=h;
 }
-
-function mkC(vv,iv){
-    var nv=nNum(vv),ni=nNum(iv),sv=String(vv).trim(),si=String(iv).trim();
-    if(nv===''&&ni==='')return '<td class="fm text-center c-emp">-</td>';
-    if(vM(vv,iv))return '<td class="fm text-center"><span class="c-ok">'+(sv||si)+'</span></td>';
-    var dv=(!sv||sv==='*'||sv==='')?'-':sv;
-    var di=(!si||si==='*'||si==='')?'-':si;
-    return '<td class="fm text-center"><div class="c-diff"><div class="cv">'+dv+'</div><div class="ci">'+di+'</div></div></td>';
-}
+function mkC(vv,iv){var nv=nNum(vv),ni=nNum(iv),sv=String(vv).trim(),si=String(iv).trim();if(nv===''&&ni==='')return '<td class="fm text-center c-emp">-</td>';if(vM(vv,iv))return '<td class="fm text-center"><span class="c-ok">'+(sv||si)+'</span></td>';var dv=(!sv||sv==='*'||sv==='')?'-':sv;var di=(!si||si==='*'||si==='')?'-':si;return '<td class="fm text-center"><div class="c-diff"><div class="cv">'+dv+'</div><div class="ci">'+di+'</div></div></td>'}
 
 // ============================================================
-// TAB TIDAK ADA DI INTERNAL
+// TAB TIDAK ADA DI INTERNAL — semua kolom vendor
 // ============================================================
 function rMis(con){
     var data=S.res.miss;if(!data.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Semua data vendor sudah punya pasangan di Internal</div>';return}
-    var cols=['No Husbel','Meter Awal','Meter Akhir','Total Tarikan','Dead End','Suspension','Palang Koil','Galian','HDPE','Paving','Conduit','Fleksibel','Jenis'];
-    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Alasan</th>';
-    cols.forEach(function(c){h+='<th>'+c+'</th>'});h+='</tr></thead><tbody>';
-    data.forEach(function(item,i){
-        var r=item.v;h+='<tr class="rl-y"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r['Tanggal']||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r['Nama SPK']||'')+'">'+(r['Nama SPK']||'')+'</td><td class="text-xs" style="color:var(--wn)">'+item.reason+'</td>';
-        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs"><span class="c-miss">'+((!val||val==='*'||val==='')?'-':val)+'</span></td>'});h+='</tr>';
-    });h+='</tbody></table>';con.innerHTML=h;
+    var cols=compCols.map(function(c){return{label:c.l,key:c.v}});CDEFS.forEach(function(d){if(!vCM[d.l]&&cols.indexOf(d.l)===-1)cols.push({label:d.l,key:vCM[d.l]})});
+    // Hapus duplikat & yang tidak ada
+    cols=cols.filter(function(c){return c.key});
+    var seen={};cols=cols.filter(function(c){if(seen[c.key])return false;seen[c.key]=true;return true});
+    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th><th>Alasan</th>';cols.forEach(function(c){h+='<th>'+c.label+'</th>'});h+='</tr></thead><tbody>';
+    data.forEach(function(item,i){var r=item.v;h+='<tr class="rl-y"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r[vDC]||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r[vNC]||'')+'">'+(r[vNC]||'')+'</td><td class="text-xs" style="color:var(--wn)">'+item.reason+'</td>';
+    cols.forEach(function(c){var val=r[c.key];h+='<td class="fm text-xs"><span class="c-miss">'+((!val||val==='*'||val==='')?'-':val)+'</span></td>'});h+='</tr>'});
+    h+='</tbody></table>';con.innerHTML=h;
 }
 
 // ============================================================
-// TAB EKSTRA DI INTERNAL
+// TAB EKSTRA DI INTERNAL — semua kolom internal
 // ============================================================
 function rExt(con){
     var data=S.res.extra;if(!data.length){con.innerHTML='<div class="p-10 text-center text-[var(--mt)]">Tidak ada data ekstra di Internal</div>';return}
-    var cols=['No Husbel','NO TIANG','TIANG 7M','TIANG 9M','Meter Awal','Meter Akhir','Total Tarikan','Dead End','Suspension','Palang Koil','Galian (meter)','HDPE (meter)','Bongkar Paving (meter)','Pasang Pipa Conduit (meter)','Fleksibel (meter)','Bobok Tembok (meter)','Jenis Kabel'];
-    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th>';
-    cols.forEach(function(c){h+='<th>'+c+'</th>'});h+='</tr></thead><tbody>';
-    data.forEach(function(item,i){
-        var r=item.r;h+='<tr class="rl-b"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r['TANGGAL']||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r['NAMA SPK']||'')+'">'+(r['NAMA SPK']||'')+'</td>';
-        cols.forEach(function(c){var val=r[c];h+='<td class="fm text-xs">'+((!val||val==='*'||val==='')?'-':val)+'</td>'});h+='</tr>';
-    });h+='</tbody></table>';con.innerHTML=h;
+    var cols=[];
+    compCols.forEach(function(c){cols.push({label:c.l,key:c.i})});
+    Object.keys(iEX).forEach(function(l){cols.push({label:l,key:iEX[l]})});
+    var seen={};cols=cols.filter(function(c){if(seen[c.key])return false;seen[c.key]=true;return true});
+    var h='<table class="dt"><thead><tr><th>#</th><th>Tanggal</th><th>Nama SPK</th>';cols.forEach(function(c){h+='<th>'+c.label+'</th>'});h+='</tr></thead><tbody>';
+    data.forEach(function(item,i){var r=item.r;h+='<tr class="rl-b"><td class="fm text-[var(--mt)]">'+(i+1)+'</td><td class="fm text-xs">'+(r[iDC]||'')+'</td><td class="text-xs max-w-[240px] truncate" title="'+(r[iNC]||'')+'">'+(r[iNC]||'')+'</td>';
+    cols.forEach(function(c){var val=r[c.key];h+='<td class="fm text-xs">'+((!val||val==='*'||val==='')?'-':val)+'</td>'});h+='</tr>'});
+    h+='</tbody></table>';con.innerHTML=h;
 }
 
 // ============================================================
@@ -412,12 +384,9 @@ function rExt(con){
 function rDsc(con){
     var stats=S.res.disc;var paired=S.res.all.filter(function(e){return e.internal}).length;
     var h='<table class="dt"><thead><tr><th>Kolom</th><th>Dibandingkan</th><th>Cocok</th><th>Selisih</th><th>Keduanya Kosong</th><th style="min-width:200px">% Cocok</th></tr></thead><tbody>';
-    CM.forEach(function(col){
-        var s=stats[col.l];var pct=s.t>0?((s.m/s.t)*100):(s.be===paired?100:0);
-        var bc=pct>=90?'var(--ac)':pct>=60?'var(--wn)':'var(--er)';
-        var tc=pct>=90?'#34d399':pct>=60?'#fde047':'#f87171';
-        h+='<tr><td class="font-semibold text-sm">'+col.l+'</td><td class="fm text-center">'+s.t+'</td><td class="fm text-center" style="color:#34d399">'+s.m+'</td><td class="fm text-center" style="color:'+(s.mm>0?'#f87171':'var(--mt)')+'">'+s.mm+'</td><td class="fm text-center text-[var(--mt)]">'+s.be+'</td><td><div class="flex items-center gap-2"><div class="db flex-1"><div class="dbf" style="width:'+pct+'%;background:'+bc+'"></div></div><span class="fm text-xs font-semibold" style="color:'+tc+';min-width:48px;text-align:right">'+pct.toFixed(1)+'%</span></div></td></tr>';
-    });h+='</tbody></table>';con.innerHTML=h;
+    compCols.forEach(function(col){var s=stats[col.l];var pct=s.t>0?((s.m/s.t)*100):(s.be===paired?100:0);var bc=pct>=90?'var(--ac)':pct>=60?'var(--wn)':'var(--er)';var tc=pct>=90?'#34d399':pct>=60?'#fde047':'#f87171';
+    h+='<tr><td class="font-semibold text-sm">'+col.l+'</td><td class="fm text-center">'+s.t+'</td><td class="fm text-center" style="color:#34d399">'+s.m+'</td><td class="fm text-center" style="color:'+(s.mm>0?'#f87171':'var(--mt)')+'">'+s.mm+'</td><td class="fm text-center text-[var(--mt)]">'+s.be+'</td><td><div class="flex items-center gap-2"><div class="db flex-1"><div class="dbf" style="width:'+pct+'%;background:'+bc+'"></div></div><span class="fm text-xs font-semibold" style="color:'+tc+';min-width:48px;text-align:right">'+pct.toFixed(1)+'%</span></div></td></tr>'});
+    h+='</tbody></table>';con.innerHTML=h;
 }
 
 // ============================================================
@@ -425,27 +394,19 @@ function rDsc(con){
 // ============================================================
 function expX(){
     var r=S.res;var wb=XLSX.utils.book_new();
-    var rows=r.all.map(function(e,i){
-        var row={'No':i+1,'Tanggal':e.v['Tanggal']||'','Nama SPK':e.v['Nama SPK']||''};
-        if(!e.internal) row['Status']='TIDAK ADA DI INTERNAL';
-        else if(e.diffCount>0) row['Status']='SELISIH ('+e.diffCount+')';
-        else row['Status']='COCOK';
-        CM.forEach(function(col){
-            row['[V] '+col.l]=e.v[col.v]||'';row['[I] '+col.l]=e.internal?(e.internal[col.i]||''):'-';
-            if(!e.internal) row['Status '+col.l]='Tidak ada pasangan';
-            else{var nv=nNum(e.v[col.v]),ni=nNum(e.internal[col.i]);if(nv===''&&ni==='')row['Status '+col.l]='-';else if(vM(e.v[col.v],e.internal[col.i]))row['Status '+col.l]='Cocok';else row['Status '+col.l]='SELISIH'}
-        });return row;
-    });
+    var rows=r.all.map(function(e,i){var row={'No':i+1,'Tanggal':e.v[vDC]||'','Nama SPK':e.v[vNC]||''};
+    if(!e.internal)row['Status']='TIDAK ADA DI INTERNAL';else if(e.diffCount>0)row['Status']='SELISIH ('+e.diffCount+')';else row['Status']='COCOK';
+    compCols.forEach(function(col){row['[V] '+col.l]=e.v[col.v]||'';row['[I] '+col.l]=e.internal?(e.internal[col.i]||''):'-';
+    if(!e.internal)row['Status '+col.l]='Tidak ada pasangan';else{var nv=nNum(e.v[col.v]),ni=nNum(e.internal[col.i]);if(nv===''&&ni==='')row['Status '+col.l]='-';else if(vM(e.v[col.v],e.internal[col.i]))row['Status '+col.l]='Cocok';else row['Status '+col.l]='SELISIH'}});return row});
     XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rows),'Perbandingan');
-    var mR=r.miss.map(function(e,i){var row={'No':i+1,'Tanggal':e.v['Tanggal']||'','Nama SPK':e.v['Nama SPK']||'','Alasan':e.reason};CM.forEach(function(c){row[c.l]=e.v[c.v]||''});return row});
+    var mR=r.miss.map(function(e,i){var row={'No':i+1,'Tanggal':e.v[vDC]||'','Nama SPK':e.v[vNC]||'','Alasan':e.reason};compCols.forEach(function(c){row[c.l]=e.v[c.v]||''});return row});
     XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(mR),'Tidak Ada di Internal');
-    var eR=r.extra.map(function(e,i){var row={'No':i+1,'Tanggal':e.r['TANGGAL']||'','Nama SPK':e.r['NAMA SPK']||''};CM.forEach(function(c){row[c.l]=e.r[c.i]||''});['NO TIANG','TIANG 7M','TIANG 9M','Bobok Tembok (meter)'].forEach(function(c){row[c]=e.r[c]||''});return row});
+    var eR=r.extra.map(function(e,i){var row={'No':i+1,'Tanggal':e.r[iDC]||'','Nama SPK':e.r[iNC]||''};compCols.forEach(function(c){row[c.l]=e.r[c.i]||''});Object.keys(iEX).forEach(function(l){row[l]=e.r[iEX[l]]||''});return row});
     XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(eR),'Ekstra di Internal');
     var paired=r.all.filter(function(e){return e.internal}).length;
-    var dR=CM.map(function(col){var s=r.disc[col.l];var pct=s.t>0?((s.m/s.t)*100):(s.be===paired?100:0);return{'Kolom':col.l,'Dibandingkan':s.t,'Cocok':s.m,'Selisih':s.mm,'Keduanya Kosong':s.be,'% Cocok':parseFloat(pct.toFixed(1))}});
+    var dR=compCols.map(function(col){var s=r.disc[col.l];var pct=s.t>0?((s.m/s.t)*100):(s.be===paired?100:0);return{'Kolom':col.l,'Dibandingkan':s.t,'Cocok':s.m,'Selisih':s.mm,'Keduanya Kosong':s.be,'% Cocok':parseFloat(pct.toFixed(1))}});
     XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(dR),'Ringkasan');
-    XLSX.writeFile(wb,'SPK_Match_'+new Date().toISOString().slice(0,10)+'.xlsx');
-    toast('Excel berhasil di-export','g');
+    XLSX.writeFile(wb,'SPK_Match_'+new Date().toISOString().slice(0,10)+'.xlsx');toast('Excel berhasil di-export','g');
 }
 
 // ============================================================
